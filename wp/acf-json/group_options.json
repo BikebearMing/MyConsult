@@ -1,0 +1,77 @@
+{
+    "key": "group_options",
+    "title": "Site settings",
+    "fields": [
+        {
+            "key": "field_options_header_cta",
+            "label": "Header CTA",
+            "name": "header_cta",
+            "type": "link",
+            "return_format": "array"
+        },
+        {
+            "key": "field_options_cta_title",
+            "label": "CTA title",
+            "name": "cta_title",
+            "type": "textarea",
+            "rows": 3,
+            "new_lines": "br",
+            "instructions": "Line breaks are kept."
+        },
+        {
+            "key": "field_options_cta_address",
+            "label": "CTA address",
+            "name": "cta_address",
+            "type": "textarea",
+            "rows": 3,
+            "new_lines": "br",
+            "instructions": "Line breaks are kept."
+        },
+        {
+            "key": "field_options_cta_button",
+            "label": "CTA button",
+            "name": "cta_button",
+            "type": "link",
+            "return_format": "array"
+        },
+        {
+            "key": "field_options_phone",
+            "label": "Phone",
+            "name": "phone",
+            "type": "text"
+        },
+        {
+            "key": "field_options_email",
+            "label": "Email",
+            "name": "email",
+            "type": "email"
+        },
+        {
+            "key": "field_options_contact_address",
+            "label": "Contact address",
+            "name": "contact_address",
+            "type": "textarea",
+            "rows": 3,
+            "new_lines": "br",
+            "instructions": "Line breaks are kept."
+        },
+        {
+            "key": "field_options_copyright",
+            "label": "Copyright",
+            "name": "copyright",
+            "type": "text",
+            "instructions": "The year is added automatically."
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "site-settings"
+            }
+        ]
+    ],
+    "active": true,
+    "modified": 1793607803
+}

@@ -1,0 +1,58 @@
+{
+    "key": "group_faq",
+    "title": "Block: FAQ",
+    "fields": [
+        {
+            "key": "field_faq_title",
+            "label": "Title",
+            "name": "title",
+            "type": "textarea",
+            "rows": 3,
+            "new_lines": "br",
+            "instructions": "Line breaks are kept."
+        },
+        {
+            "key": "field_faq_items",
+            "label": "Items",
+            "name": "items",
+            "type": "repeater",
+            "layout": "block",
+            "button_label": "Add question",
+            "sub_fields": [
+                {
+                    "key": "field_faq_items_question",
+                    "label": "Question",
+                    "name": "question",
+                    "type": "text"
+                },
+                {
+                    "key": "field_faq_items_answer",
+                    "label": "Answer",
+                    "name": "answer",
+                    "type": "textarea",
+                    "rows": 4,
+                    "new_lines": ""
+                },
+                {
+                    "key": "field_faq_items_open",
+                    "label": "Open",
+                    "name": "open",
+                    "type": "true_false",
+                    "ui": 1,
+                    "instructions": "Open on page load."
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf/faq"
+            }
+        ]
+    ],
+    "active": true,
+    "modified": 1793607803
+}

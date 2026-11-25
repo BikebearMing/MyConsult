@@ -1,0 +1,90 @@
+{
+    "key": "group_services",
+    "title": "Block: Services cards",
+    "fields": [
+        {
+            "key": "field_services_chip",
+            "label": "Chip",
+            "name": "chip",
+            "type": "text"
+        },
+        {
+            "key": "field_services_title",
+            "label": "Title",
+            "name": "title",
+            "type": "text"
+        },
+        {
+            "key": "field_services_text",
+            "label": "Text",
+            "name": "text",
+            "type": "textarea",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_services_slides",
+            "label": "Cards",
+            "name": "slides",
+            "type": "repeater",
+            "layout": "block",
+            "button_label": "Add card",
+            "sub_fields": [
+                {
+                    "key": "field_services_slides_visual",
+                    "label": "Visual",
+                    "name": "visual",
+                    "type": "select",
+                    "instructions": "The decorative cards at the top of the card.",
+                    "choices": {
+                        "dashboard": "Accuracy + revenue",
+                        "payroll": "Payroll processed + employee satisfaction",
+                        "automation": "Automation impact + time saved"
+                    },
+                    "default_value": "dashboard",
+                    "return_format": "value"
+                },
+                {
+                    "key": "field_services_slides_title",
+                    "label": "Title",
+                    "name": "title",
+                    "type": "text"
+                },
+                {
+                    "key": "field_services_slides_points",
+                    "label": "Points",
+                    "name": "points",
+                    "type": "repeater",
+                    "layout": "table",
+                    "button_label": "Add point",
+                    "sub_fields": [
+                        {
+                            "key": "field_services_slides_points_text",
+                            "label": "Text",
+                            "name": "text",
+                            "type": "text"
+                        }
+                    ]
+                },
+                {
+                    "key": "field_services_slides_button",
+                    "label": "Button",
+                    "name": "button",
+                    "type": "link",
+                    "return_format": "array"
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf/services"
+            }
+        ]
+    ],
+    "active": true,
+    "modified": 1793607803
+}

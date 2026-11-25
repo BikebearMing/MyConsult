@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MyConsult</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- Site header (theme template part, not an ACF block)
+     logo: custom logo (assets/myconsult-logo.svg); menu: wp_nav_menu('primary');
+     button: ACF options page, header_cta (link) -->
+<header class="header">
+  <a class="header__logo" href="/"><img src="assets/myconsult-logo.svg" alt="MyConsult" width="114" height="33"></a>
+  <nav class="header__nav" aria-label="Main">
+    <ul>
+      <li><a href="#" class="button_label" data-delay="0.3">About</a></li>
+      <li><a href="#" class="button_label" data-delay="0.38">Solutions</a></li>
+      <li><a href="#" class="button_label" data-delay="0.46">Blog</a></li>
+      <li><a href="#" class="button_label" data-delay="0.54">Case Studies</a></li>
+    </ul>
+  </nav>
+  <a class="btn header__btn" href="#"><span class="button_label" data-delay="0.6">Speak to us</span><svg class="btn__arrow" viewBox="-4 -4 210 168" aria-hidden="true"><circle cx="15" cy="80" r="15.5" opacity="0.25" style="--i:0"/><circle cx="58" cy="80" r="15.5" opacity="0.45" style="--i:1"/><circle cx="100" cy="80" r="15.5" opacity="0.7" style="--i:2"/><circle cx="143" cy="16" r="15.5" style="--i:3"/><circle cx="143" cy="80" r="15.5" style="--i:3"/><circle cx="143" cy="144" r="15.5" style="--i:3"/><circle cx="165" cy="48" r="15.5" style="--i:4"/><circle cx="165" cy="112" r="15.5" style="--i:4"/><circle cx="186" cy="80" r="15.5" style="--i:5"/></svg></a>
+</header>
+
+<!-- ACF block: hero
+     fields: eyebrow (text), title (text), text (textarea)
+     side cards are decorative (aria-hidden); promote their numbers to fields if the client must edit them
+     arcs: arc_left_label (text), arc_right_label (text) -->
+<section class="hero">
+  <p class="h5 hero__eyebrow" data-delay="0">Accounting Consultancy</p>
+  <h1 class="h1 hero__title" data-delay="0.2">Accounting Powered by Intelligence.</h1>
+  <p class="body hero__text" data-delay="0.8">From accounting and payroll to automation and advisory, we help businesses simplify financial operations, improve reporting, and make better-informed decisions.</p>
+
+  <div class="hero__stack hero__stack--left" aria-hidden="true">
+    <div class="stat stat--orders" data-reveal data-delay="1.1">
+      <div class="stat__label">Total orders</div>
+      <div class="stat__value">1054</div>
+      <div class="stat__delta">+330 today</div>
+      <!-- drawn in card px (184x94), scales with the card -->
+      <svg class="stat__chart" viewBox="0 0 184 94"><path d="M114 10V83"/><path d="M104.5 77.5Q109 79 114 77C124 71 134 50 146 38C156 29 164 27 172 27.5Q176 27.8 178.5 28"/><circle cx="114" cy="77" r="2"/></svg>
+      <span class="stat__tag">20 total</span>
+    </div>
+    <div class="stat stat--sales" data-reveal data-delay="1.4">
+      <div class="stat__label">Net sales</div>
+      <div class="stat__row"><span class="stat__value">$19,750</span><span class="stat__delta">+15%</span></div>
+      <div class="bars"><i style="--h:50%"></i><i class="c" style="--h:45%"></i><i class="m" style="--h:55%"></i><i class="c" style="--h:45%"></i><i style="--h:50%"></i><i style="--h:55%"></i><i style="--h:63%"></i><i class="m" style="--h:79%"></i><i class="m" style="--h:87%"></i><i class="c" style="--h:68%"></i><i style="--h:74%"></i><i class="m" style="--h:100%"></i></div>
+    </div>
+  </div>
+
+  <div class="hero__stack hero__stack--right" aria-hidden="true">
+    <div class="ai-card" data-reveal data-delay="1.25">
+      <div class="ai-card__head"><i class="ai-orb"></i><span class="ai-card__bar"><i></i></span></div>
+      <div class="ai-card__body">
+        <div class="ai-card__hint">Helping you with...</div>
+        <div class="ai-card__text">Summarizing your account datas and history...</div>
+      </div>
+    </div>
+    <div class="ai-pill" data-reveal data-delay="1.55"><i class="ai-orb"></i>Analyzing data...</div>
+  </div>
+  <!-- arcs stage: one SVG in design px (1440 wide, 638 tall); one WebGL canvas on top draws the particles and the orb (js/arcs.js, js/orb.js).
+       Circles r420, centres (400,422) and (1040,422); they cross at (720,150) and fade 40 past it.
+       Scroll: dots ride their arcs shedding particles; the two streams spiral into a sphere at the crossing that falls into the ring,
+       landing particles uncover the orb, then the ring draws around it. Arcs and labels draw in on first view.
+       With reduced motion everything simply shows. -->
+  <div class="hero__arcs">
+    <svg class="arcs" viewBox="0 0 1440 638" aria-hidden="true">
+      <defs>
+        <linearGradient id="arc-l" gradientUnits="userSpaceOnUse" x1="32" x2="760">
+          <stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset="0.24" stop-color="#fff" stop-opacity="0.25"/>
+          <stop offset="0.43" stop-color="#fff"/><stop offset="0.8" stop-color="#fff"/><stop offset="0.92" stop-color="#CBECFD" stop-opacity="0.35"/><stop offset="1" stop-color="#CBECFD" stop-opacity="0"/>
+        </linearGradient>
+        <linearGradient id="arc-r" gradientUnits="userSpaceOnUse" x1="680" x2="1408">
+          <stop offset="0" stop-color="#CBECFD" stop-opacity="0"/><stop offset="0.08" stop-color="#CBECFD" stop-opacity="0.35"/><stop offset="0.2" stop-color="#fff"/>
+          <stop offset="0.57" stop-color="#fff"/><stop offset="0.76" stop-color="#fff" stop-opacity="0.25"/><stop offset="1" stop-color="#fff" stop-opacity="0"/>
+        </linearGradient>
+        <linearGradient id="ring" x1="0.6" y1="0" x2="0.3" y2="1" gradientTransform="rotate(90 0.5 0.5)"> <!-- undoes the ring's -90 turn -->
+          <stop offset="0" stop-color="#fff"/><stop offset="0.6" stop-color="#fff" stop-opacity="0.55"/><stop offset="1" stop-color="#fff" stop-opacity="0.08"/>
+        </linearGradient>
+      </defs>
+      <circle class="arcs__dome" cx="720" cy="2811" r="2322"/>                          <!-- top edge 489 down, the dark curve -->
+      <circle class="arcs__ring" cx="720" cy="485.5" r="132.5" stroke="url(#ring)" transform="rotate(-90 720 485.5)"/>    <!-- 265 ring, top 395 below the paragraph -->
+      <path d="M32 220A420 420 0 0 1 760 205.7" stroke="url(#arc-l)"/>
+      <path d="M680 205.7A420 420 0 0 1 1408 220" stroke="url(#arc-r)"/>
+      <!-- dots sit at the arc top, rotated about their circle's centre to the arc's outer end (±61.25deg) -->
+      <g class="arcs__mover arcs__mover--pink" transform="rotate(-61.25 400 422)"><circle class="arcs__dot arcs__dot--pink" cx="400" cy="2" r="3.5"/></g>
+      <g class="arcs__mover arcs__mover--blue" transform="rotate(61.25 1040 422)"><circle class="arcs__glow" cx="1040" cy="2" r="7"/><circle class="arcs__dot arcs__dot--blue" cx="1040" cy="2" r="3.75"/></g>
+    </svg>
+    <p class="arcs__label arcs__label--left">Accounting</p>
+    <p class="arcs__label arcs__label--right">A.I.</p>
+    <canvas class="arcs__particles" role="img" aria-label="MyConsult orb"></canvas>
+  </div>
+</section>
+
+<!-- ACF block: about_intro
+     fields: title (textarea, line breaks kept), text (textarea), button_label (text), button_link (link) -->
+<section class="about">
+  <h2 class="h2 about__title">We help businesses simplify<br>financial operations, improve reporting, and<br>make better-informed decisions.</h2>
+  <p class="body about__text">Since 2003, Myconsult has supported Malaysian SMEs with accounting software implementation, support, outsourced accounting and payroll. With over 1,000 implementations completed, we bring both technical and accounting experience to every business we work with. Our experience across multiple accounting systems allows us to recommend solutions based on what fits your business best and not simply what we sell.</p>
+  <a class="btn" href="#"><span class="button_label">About Myconsult</span><svg class="btn__arrow" viewBox="-4 -4 210 168" aria-hidden="true"><circle cx="15" cy="80" r="15.5" opacity="0.25" style="--i:0"/><circle cx="58" cy="80" r="15.5" opacity="0.45" style="--i:1"/><circle cx="100" cy="80" r="15.5" opacity="0.7" style="--i:2"/><circle cx="143" cy="16" r="15.5" style="--i:3"/><circle cx="143" cy="80" r="15.5" style="--i:3"/><circle cx="143" cy="144" r="15.5" style="--i:3"/><circle cx="165" cy="48" r="15.5" style="--i:4"/><circle cx="165" cy="112" r="15.5" style="--i:4"/><circle cx="186" cy="80" r="15.5" style="--i:5"/></svg></a>
+</section>
+
+<!-- ACF block: logos
+     fields: label (text), logos (repeater: logo image, gap after it in design px; default 92)
+     The strip scrolls forever: js/main.js repeats the set to fill two screens, CSS moves it by half. -->
+<section class="logos">
+  <p class="body logos__label">Trusted by more than 100+ companies</p>
+  <div class="logos__marquee">
+    <!-- PLACEHOLDERS: swap each item's text for the client's white logo file, e.g. <img src="assets/logos/mac-city.svg" alt="mac city"> -->
+    <ul class="logos__track">
+      <li class="logo logo--maccity" style="--gap: 92">mac city</li>
+      <li class="logo logo--jc" style="--gap: 92"><b>JC</b><span>The Japan Club<br>of Kuala Lumpur</span></li>
+      <li class="logo logo--reapfield" style="--gap: 86">Reapfield</li>
+      <li class="logo logo--machines" style="--gap: 68">machines<i></i></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ACF block: services
+     fields: chip (text), title (text), text (textarea),
+             slides, labelled Cards (repeater: visual (select: dashboard / payroll / automation), title, points (repeater: text), button (link))
+     Three cards in a row; each card's pair of dashboard cards plays in once as the cards scroll into view (js/main.js). -->
+<section class="services">
+  <span class="chip">Services</span>
+  <i class="stem" aria-hidden="true" style="--h: 4.583vw"></i>
+  <h2 class="h2 services__title">What Myconsult does for Malaysian SMEs</h2>
+  <p class="body services__text">Two divisions, run by one team: accounting software implemented properly, and accounting and payroll handled monthly on your behalf.</p>
+  <div class="services__grid">
+    <article class="service">
+      <div class="service__visual" aria-hidden="true">
+        <div class="dash dash--revenue">
+          <div class="dash__label">Revenue impact</div>
+          <div class="dash__value" data-to="2.48" data-decimals="2" data-prefix="$" data-suffix="M">$2.48M</div>
+          <div class="dash__delta">+18.2% vs last month</div>
+          <i class="dash__halo"><i></i></i>
+          <svg class="dash__chart" viewBox="0 0 196 204">
+            <g class="dash__grid"><line x1="49" y1="164" x2="49" y2="189"/><line x1="81" y1="169" x2="81" y2="189"/><line x1="114" y1="155" x2="114" y2="189"/><line x1="142" y1="159" x2="142" y2="189"/><line x1="169" y1="147" x2="169" y2="189"/></g>
+            <polyline class="dash__line" points="20,158 35,163 49,160 66,162 81,165 98,157 114,151 128,152 142,155 156,149 169,143"/>
+            <g class="dash__dots"><circle cx="20" cy="158" r="2.2"/><circle cx="35" cy="163" r="2.2"/><circle cx="49" cy="160" r="3"/><circle cx="66" cy="162" r="2.2"/><circle cx="81" cy="165" r="3"/><circle cx="98" cy="157" r="2.2"/><circle cx="114" cy="151" r="3"/><circle cx="128" cy="152" r="2.2"/><circle cx="142" cy="155" r="3"/><circle cx="156" cy="149" r="2.2"/></g>
+            <circle class="dash__end" cx="169" cy="143" r="4"/>
+          </svg>
+        </div>
+        <div class="dash dash--accuracy">
+          <div class="dash__label">Accuracy rate</div>
+          <div class="dash__ring">
+            <svg viewBox="0 0 122 122"><circle class="dash__arc" cx="61" cy="61" r="57" stroke="#D64FBF" stroke-dasharray="208.8 358.1" transform="rotate(-88 61 61)"/><circle class="dash__arc" cx="61" cy="61" r="57" stroke="#C9637F" stroke-dasharray="144.3 358.1" transform="rotate(121.9 61 61)"/></svg>
+            <div class="dash__ring-value" data-to="98.6" data-decimals="1" data-suffix="%">98.6%</div>
+            <div class="dash__label">Accurate</div>
+          </div>
+          <div class="dash__row">
+            <svg viewBox="0 0 24 24"><path d="M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5z"/><path class="tick" d="m8.5 12 2.5 2.5 4.5-5"/></svg>
+            <span class="dash__label">Compliance</span><span class="dash__count" data-to="100" data-suffix="%">100%</span>
+          </div>
+        </div>
+      </div>
+      <h3 class="h3 service__title">AutoCount &amp; SQL Accounting</h3>
+      <ul class="service__points">
+        <li class="body"><svg class="service__bullet" viewBox="-4 -4 210 168" aria-hidden="true"><circle cx="15" cy="80" r="15.5" opacity="0.25" style="--i:0"/><circle cx="58" cy="80" r="15.5" opacity="0.45" style="--i:1"/><circle cx="100" cy="80" r="15.5" opacity="0.7" style="--i:2"/><circle cx="143" cy="16" r="15.5" style="--i:3"/><circle cx="143" cy="80" r="15.5" style="--i:3"/><circle cx="143" cy="144" r="15.5" style="--i:3"/><circle cx="165" cy="48" r="15.5" style="--i:4"/><circle cx="165" cy="112" r="15.5" style="--i:4"/><circle cx="186" cy="80" r="15.5" style="--i:5"/></svg><span>Retail and F&amp;B → AutoCount, for multi-outlet and POS</span></li>
+        <li class="body"><svg class="service__bullet" viewBox="-4 -4 210 168" aria-hidden="true"><circle cx="15" cy="80" r="15.5" opacity="0.25" style="--i:0"/><circle cx="58" cy="80" r="15.5" opacity="0.45" style="--i:1"/><circle cx="100" cy="80" r="15.5" opacity="0.7" style="--i:2"/><circle cx="143" cy="16" r="15.5" style="--i:3"/><circle cx="143" cy="80" r="15.5" style="--i:3"/><circle cx="143" cy="144" r="15.5" style="--i:3"/><circle cx="165" cy="48" r="15.5" style="--i:4"/><circle cx="165" cy="112" r="15.5" style="--i:4"/><circle cx="186" cy="80" r="15.5" style="--i:5"/></svg><span>Smaller and simpler → SQL Accounting</span></li>
+        <li class="body"><svg class="service__bullet" viewBox="-4 -4 210 168" aria-hidden="true"><circle cx="15" cy="80" r="15.5" opacity="0.25" style="--i:0"/><circle cx="58" cy="80" r="15.5" opacity="0.45" style="--i:1"/><circle cx="100" cy="80" r="15.5" opacity="0.7" style="--i:2"/><circle cx="143" cy="16" r="15.5" style="--i:3"/><circle cx="143" cy="80" r="15.5" style="--i:3"/><circle cx="143" cy="144" r="15.5" style="--i:3"/><circle cx="165" cy="48" r="15.5" style="--i:4"/><circle cx="165" cy="112" r="15.5" style="--i:4"/><circle cx="186" cy="80" r="15.5" style="--i:5"/></svg><span>No hardware → AutoCount Cloud, QuickBooks, Xero</span></li>
+        <li class="body"><svg class="service__bullet" viewBox="-4 -4 210 168" aria-hidden="true"><circle cx="15" cy="80" r="15.5" opacity="0.25" style="--i:0"/><circle cx="58" cy="80" r="15.5" opacity="0.45" style="--i:1"/><circle cx="100" cy="80" r="15.5" opacity="0.7" style="--i:2"/><circle cx="143" cy="16" r="15.5" style="--i:3"/><circle cx="143" cy="80" r="15.5" style="--i:3"/><circle cx="143" cy="144" r="15.5" style="--i:3"/><circle cx="165" cy="48" r="15.5" style="--i:4"/><circle cx="165" cy="112" r="15.5" style="--i:4"/><circle cx="186" cy="80" r="15.5" style="--i:5"/></svg><span>From RM1,499 (SQL) or RM2,499 (AutoCount)</span></li>
+      </ul>
+    </article>
+    <article class="service">
+      <!-- payroll processed + employee satisfaction (decorative) -->
+      <div class="service__visual" aria-hidden="true">
+        <div class="dash dash--payroll">
+          <div class="dash__label">Payroll processed</div>
+          <div class="dash__head">
+            <div class="dash__value dash__value--md" data-to="2856">2,856</div>
+            <span class="dash__icon"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 19c0-3 2.5-5.2 5.5-5.2s5.5 2.2 5.5 5.2"/><circle cx="16.5" cy="9" r="2.6"/><path d="M15.2 13.9c3 .2 5.3 2.2 5.3 5.1"/></svg></span>
+          </div>
+          <div class="dash__delta dash__delta--tight">This month</div>
+          <div class="dash__row dash__row--trend">
+            <svg class="dash__up" viewBox="0 0 24 24"><path d="M12 19V5M6 11l6-6 6 6"/></svg>
+            <span class="dash__count dash__count--inline" data-to="196" data-prefix="+">+196</span><span class="dash__label">vs last month</span>
+          </div>
+        </div>
+        <div class="dash dash--satisfaction">
+          <div class="dash__label">Employee satisfaction</div>
+          <div class="dash__value" data-to="4.7" data-decimals="1">4.7</div>
+          <div class="dash__stars">
+            <svg viewBox="0 0 24 24"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4 6.1 20.5l1.2-6.5L2.5 9.4l6.6-.9z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4 6.1 20.5l1.2-6.5L2.5 9.4l6.6-.9z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4 6.1 20.5l1.2-6.5L2.5 9.4l6.6-.9z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4 6.1 20.5l1.2-6.5L2.5 9.4l6.6-.9z"/></svg><svg viewBox="0 0 24 24"><defs><linearGradient id="dash-star-part"><stop offset="0.7" stop-color="#E8336F"/><stop offset="0.7" stop-color="rgba(232, 51, 111, 0.25)"/></linearGradient></defs><path fill="url(#dash-star-part)" d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4 6.1 20.5l1.2-6.5L2.5 9.4l6.6-.9z"/></svg>
+          </div>
+          <div class="dash__row">
+            <svg class="dash__spark" viewBox="0 0 80 24" preserveAspectRatio="none"><path class="dash__area" d="M2 20C10 19 14 15 20 16S30 12 36 13 48 8 54 9 68 4 78 3V24H2Z"/><path class="dash__line" d="M2 20C10 19 14 15 20 16S30 12 36 13 48 8 54 9 68 4 78 3"/></svg>
+            <div class="dash__trend"><span class="dash__count dash__count--inline" data-to="0.3" data-decimals="1" data-prefix="+">+0.3</span><span class="dash__label">vs last month</span></div>
+          </div>
+        </div>
+      </div>
+      <h3 class="h3 service__title">Outsourced accounting and payroll</h3>
+      <ul class="service__points">
+        <li class="body"><svg class="service__bullet" viewBox="-4 -4 210 168" aria-hidden="true"><circle cx="15" cy="80" r="15.5" opacity="0.25" style="--i:0"/><circle cx="58" cy="80" r="15.5" opacity="0.45" style="--i:1"/><circle cx="100" cy="80" r="15.5" opacity="0.7" style="--i:2"/><circle cx="143" cy="16" r="15.5" style="--i:3"/><circle cx="143" cy="80" r="15.5" style="--i:3"/><circle cx="143" cy="144" r="15.5" style="--i:3"/><circle cx="165" cy="48" r="15.5" style="--i:4"/><circle cx="165" cy="112" r="15.5" style="--i:4"/><circle cx="186" cy="80" r="15.5" style="--i:5"/></svg><span>Monthly, bi-monthly or quarterly accounts</span></li>
+        <li class="body"><svg class="service__bullet" viewBox="-4 -4 210 168" aria-hidden="true"><circle cx="15" cy="80" r="15.5" opacity="0.25" style="--i:0"/><circle cx="58" cy="80" r="15.5" opacity="0.45" style="--i:1"/><circle cx="100" cy="80" r="15.5" opacity="0.7" style="--i:2"/><circle cx="143" cy="16" r="15.5" style="--i:3"/><circle cx="143" cy="80" r="15.5" style="--i:3"/><circle cx="143" cy="144" r="15.5" style="--i:3"/><circle cx="165" cy="48" r="15.5" style="--i:4"/><circle cx="165" cy="112" r="15.5" style="--i:4"/><circle cx="186" cy="80" r="15.5" style="--i:5"/></svg><span>A financial health report every cycle</span></li>
+        <li class="body"><svg class="service__bullet" viewBox="-4 -4 210 168" aria-hidden="true"><circle cx="15" cy="80" r="15.5" opacity="0.25" style="--i:0"/><circle cx="58" cy="80" r="15.5" opacity="0.45" style="--i:1"/><circle cx="100" cy="80" r="15.5" opacity="0.7" style="--i:2"/><circle cx="143" cy="16" r="15.5" style="--i:3"/><circle cx="143" cy="80" r="15.5" style="--i:3"/><circle cx="143" cy="144" r="15.5" style="--i:3"/><circle cx="165" cy="48" r="15.5" style="--i:4"/><circle cx="165" cy="112" r="15.5" style="--i:4"/><circle cx="186" cy="80" r="15.5" style="--i:5"/></svg><span>Payroll alongside, statutory submissions included</span></li>
+        <li class="body"><svg class="service__bullet" viewBox="-4 -4 210 168" aria-hidden="true"><circle cx="15" cy="80" r="15.5" opacity="0.25" style="--i:0"/><circle cx="58" cy="80" r="15.5" opacity="0.45" style="--i:1"/><circle cx="100" cy="80" r="15.5" opacity="0.7" style="--i:2"/><circle cx="143" cy="16" r="15.5" style="--i:3"/><circle cx="143" cy="80" r="15.5" style="--i:3"/><circle cx="143" cy="144" r="15.5" style="--i:3"/><circle cx="165" cy="48" r="15.5" style="--i:4"/><circle cx="165" cy="112" r="15.5" style="--i:4"/><circle cx="186" cy="80" r="15.5" style="--i:5"/></svg><span>From RM800/month, payroll from RM350/month</span></li>
+      </ul>
+      <a class="btn service__btn" href="#"><span class="button_label">See what outsourced accounting includes</span><svg class="btn__arrow" viewBox="-4 -4 210 168" aria-hidden="true"><circle cx="15" cy="80" r="15.5" opacity="0.25" style="--i:0"/><circle cx="58" cy="80" r="15.5" opacity="0.45" style="--i:1"/><circle cx="100" cy="80" r="15.5" opacity="0.7" style="--i:2"/><circle cx="143" cy="16" r="15.5" style="--i:3"/><circle cx="143" cy="80" r="15.5" style="--i:3"/><circle cx="143" cy="144" r="15.5" style="--i:3"/><circle cx="165" cy="48" r="15.5" style="--i:4"/><circle cx="165" cy="112" r="15.5" style="--i:4"/><circle cx="186" cy="80" r="15.5" style="--i:5"/></svg></a>
+    </article>
+    <article class="service">
+      <!-- automation impact + time saved (decorative) -->
+      <div class="service__visual" aria-hidden="true">
+        <div class="dash dash--automation">
+          <div class="dash__label">Automation impact</div>
+          <div class="dash__head">
+            <div class="dash__value dash__value--md" data-to="152">152</div>
+            <div class="dash__gauge">
+              <svg viewBox="0 0 60 60"><circle class="dash__track" cx="30" cy="30" r="25"/><circle class="dash__arc" cx="30" cy="30" r="25" stroke="#D64FBF" stroke-dasharray="117.8 157.1" transform="rotate(-90 30 30)"/></svg>
+              <svg class="dash__gear" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+            </div>
+          </div>
+          <div class="dash__delta dash__delta--tight">Processes automated</div>
+          <div class="dash__row dash__row--trend">
+            <svg class="dash__up" viewBox="0 0 24 24"><path d="M12 19V5M6 11l6-6 6 6"/></svg>
+            <span class="dash__count dash__count--inline" data-to="28" data-suffix="%">28%</span><span class="dash__label">efficiency gain</span>
+          </div>
+        </div>
+        <div class="dash dash--time">
+          <div class="dash__label">Time saved</div>
+          <div class="dash__value dash__value--md" data-to="1240">1,240</div>
+          <div class="dash__unit">Hours</div>
+          <div class="dash__delta">+320 this month</div>
+          <div class="dash__bars"><i style="--h: 34%"></i><i style="--h: 42%"></i><i style="--h: 50%"></i><i style="--h: 66%"></i><i style="--h: 82%"></i><i style="--h: 100%"></i></div>
+          <div class="dash__months"><span>J</span><span>F</span><span>M</span><span>A</span><span>M</span><span>J</span></div>
+        </div>
+      </div>
+      <h3 class="h3 service__title">e-Invoice and MyInvois</h3>
+      <ul class="service__points">
+        <li class="body"><svg class="service__bullet" viewBox="-4 -4 210 168" aria-hidden="true"><circle cx="15" cy="80" r="15.5" opacity="0.25" style="--i:0"/><circle cx="58" cy="80" r="15.5" opacity="0.45" style="--i:1"/><circle cx="100" cy="80" r="15.5" opacity="0.7" style="--i:2"/><circle cx="143" cy="16" r="15.5" style="--i:3"/><circle cx="143" cy="80" r="15.5" style="--i:3"/><circle cx="143" cy="144" r="15.5" style="--i:3"/><circle cx="165" cy="48" r="15.5" style="--i:4"/><circle cx="165" cy="112" r="15.5" style="--i:4"/><circle cx="186" cy="80" r="15.5" style="--i:5"/></svg><span>Included in implementation for new clients</span></li>
+        <li class="body"><svg class="service__bullet" viewBox="-4 -4 210 168" aria-hidden="true"><circle cx="15" cy="80" r="15.5" opacity="0.25" style="--i:0"/><circle cx="58" cy="80" r="15.5" opacity="0.45" style="--i:1"/><circle cx="100" cy="80" r="15.5" opacity="0.7" style="--i:2"/><circle cx="143" cy="16" r="15.5" style="--i:3"/><circle cx="143" cy="80" r="15.5" style="--i:3"/><circle cx="143" cy="144" r="15.5" style="--i:3"/><circle cx="165" cy="48" r="15.5" style="--i:4"/><circle cx="165" cy="112" r="15.5" style="--i:4"/><circle cx="186" cy="80" r="15.5" style="--i:5"/></svg><span>RM2,000 to add e-Invoice to an existing system</span></li>
+        <li class="body"><svg class="service__bullet" viewBox="-4 -4 210 168" aria-hidden="true"><circle cx="15" cy="80" r="15.5" opacity="0.25" style="--i:0"/><circle cx="58" cy="80" r="15.5" opacity="0.45" style="--i:1"/><circle cx="100" cy="80" r="15.5" opacity="0.7" style="--i:2"/><circle cx="143" cy="16" r="15.5" style="--i:3"/><circle cx="143" cy="80" r="15.5" style="--i:3"/><circle cx="143" cy="144" r="15.5" style="--i:3"/><circle cx="165" cy="48" r="15.5" style="--i:4"/><circle cx="165" cy="112" r="15.5" style="--i:4"/><circle cx="186" cy="80" r="15.5" style="--i:5"/></svg><span>Self-billed e-Invoices handled monthly</span></li>
+        <li class="body"><svg class="service__bullet" viewBox="-4 -4 210 168" aria-hidden="true"><circle cx="15" cy="80" r="15.5" opacity="0.25" style="--i:0"/><circle cx="58" cy="80" r="15.5" opacity="0.45" style="--i:1"/><circle cx="100" cy="80" r="15.5" opacity="0.7" style="--i:2"/><circle cx="143" cy="16" r="15.5" style="--i:3"/><circle cx="143" cy="80" r="15.5" style="--i:3"/><circle cx="143" cy="144" r="15.5" style="--i:3"/><circle cx="165" cy="48" r="15.5" style="--i:4"/><circle cx="165" cy="112" r="15.5" style="--i:4"/><circle cx="186" cy="80" r="15.5" style="--i:5"/></svg><span>Below RM3 million turnover? You may be exempt</span></li>
+      </ul>
+      <a class="btn service__btn" href="#"><span class="button_label">Understand e-Invoice for your business</span><svg class="btn__arrow" viewBox="-4 -4 210 168" aria-hidden="true"><circle cx="15" cy="80" r="15.5" opacity="0.25" style="--i:0"/><circle cx="58" cy="80" r="15.5" opacity="0.45" style="--i:1"/><circle cx="100" cy="80" r="15.5" opacity="0.7" style="--i:2"/><circle cx="143" cy="16" r="15.5" style="--i:3"/><circle cx="143" cy="80" r="15.5" style="--i:3"/><circle cx="143" cy="144" r="15.5" style="--i:3"/><circle cx="165" cy="48" r="15.5" style="--i:4"/><circle cx="165" cy="112" r="15.5" style="--i:4"/><circle cx="186" cy="80" r="15.5" style="--i:5"/></svg></a>
+    </article>
+  </div>
+</section>
+
+<!-- ACF block: case_studies
+     fields: chip (text), title (text), cases (repeater: image, title, text (textarea), solution (textarea), results (textarea), link)
+     Top edge is a dark dome over the blue glow at the bottom of the services section. -->
+<section class="cases">
+  <span class="chip">Case studies</span>
+  <i class="stem" aria-hidden="true" style="--h: 2.535vw"></i>
+  <h2 class="h2">Transforming Finance Operations.</h2>
+  <article class="case">
+    <img class="case__img" src="assets/case-study-1.jpg" alt="Shoppers on the walkways of a multi-storey retail mall" width="473" height="444" loading="lazy">
+    <div class="case__body">
+      <h3 class="h3">Six-outlet retail group, Peninsular Malaysia</h3>
+      <p class="body case__text">Every outlet sent in an Excel sheet, which the accounts team keyed manually into ABSS. Data entry alone took two to three weeks, and management reports took another two weeks after that — numbers reached management more than a month after period close. Stock levels by outlet were not visible at all.</p>
+      <div class="case__cols">
+        <div class="case__col">
+          <span class="chip">Solution</span>
+          <p class="body">We recommended AutoCount for its multi-outlet POS capabilities and migrated them from ABSS</p>
+          <a class="btn" href="#"><span class="button_label">View case study</span><svg class="btn__arrow" viewBox="-4 -4 210 168" aria-hidden="true"><circle cx="15" cy="80" r="15.5" opacity="0.25" style="--i:0"/><circle cx="58" cy="80" r="15.5" opacity="0.45" style="--i:1"/><circle cx="100" cy="80" r="15.5" opacity="0.7" style="--i:2"/><circle cx="143" cy="16" r="15.5" style="--i:3"/><circle cx="143" cy="80" r="15.5" style="--i:3"/><circle cx="143" cy="144" r="15.5" style="--i:3"/><circle cx="165" cy="48" r="15.5" style="--i:4"/><circle cx="165" cy="112" r="15.5" style="--i:4"/><circle cx="186" cy="80" r="15.5" style="--i:5"/></svg></a>
+        </div>
+        <i class="case__divider" aria-hidden="true"></i>
+        <div class="case__col">
+          <span class="chip">Results</span>
+          <p class="body">Sales now sync daily, manual rekeying is eliminated, and management accounts are ready by mid-month.</p>
+        </div>
+      </div>
+    </div>
+  </article>
+</section>
+
+<!-- ACF block: faq
+     fields: title (textarea, line breaks kept), items (repeater: question (text), answer (textarea))
+     Native <details name="faq">: one answer open at a time, keyboard accessible, no JS. -->
+<section class="faq">
+  <h2 class="h2">Frequently Asked<br>Questions.</h2>
+  <div class="faq__list">
+    <details class="faq__item" name="faq" data-reveal>
+      <summary><span class="h4">Should I choose AutoCount or SQL Accounting?</span><span class="faq__toggle" aria-hidden="true"><svg viewBox="-10 -10 20 20"><g><circle cx="-6" r="1.4"/><circle cx="-3" r="1.4"/><circle r="1.4"/><circle cx="3" r="1.4"/><circle cx="6" r="1.4"/></g><g class="faq__v"><circle cy="-6" r="1.4" style="--i:1"/><circle cy="-3" r="1.4" style="--i:0"/><circle cy="3" r="1.4" style="--i:0"/><circle cy="6" r="1.4" style="--i:1"/></g></svg></span></summary>
+      <p class="faq__answer">It depends on how your business sells. Retail and F&amp;B businesses selling direct to consumers are usually better served by AutoCount, because of its multi-outlet handling and integrated POS. Service businesses and those with straightforward needs are usually better served by SQL Accounting. Both come in an on-premise and a cloud version. Myconsult is an authorised dealer for both, so we recommend based on fit rather than on which product we carry.</p>
+    </details>
+    <details class="faq__item" name="faq" data-reveal open>
+      <summary><span class="h4">How much does AutoCount or SQL Accounting cost in Malaysia?</span><span class="faq__toggle" aria-hidden="true"><svg viewBox="-10 -10 20 20"><g><circle cx="-6" r="1.4"/><circle cx="-3" r="1.4"/><circle r="1.4"/><circle cx="3" r="1.4"/><circle cx="6" r="1.4"/></g><g class="faq__v"><circle cy="-6" r="1.4" style="--i:1"/><circle cy="-3" r="1.4" style="--i:0"/><circle cy="3" r="1.4" style="--i:0"/><circle cy="6" r="1.4" style="--i:1"/></g></svg></span></summary>
+      <p class="faq__answer">A single-company SQL Accounting package starts from RM1,499, which includes the software and half a day of basic training. AutoCount starts from RM2,499. Full implementation, covering database setup, 12 to 15 hours of training, 5 customised forms and your first year of support, starts from RM2,000 on top of the software.</p>
+    </details>
+    <details class="faq__item" name="faq" data-reveal>
+      <summary><span class="h4">How long does an accounting software implementation take?</span><span class="faq__toggle" aria-hidden="true"><svg viewBox="-10 -10 20 20"><g><circle cx="-6" r="1.4"/><circle cx="-3" r="1.4"/><circle r="1.4"/><circle cx="3" r="1.4"/><circle cx="6" r="1.4"/></g><g class="faq__v"><circle cy="-6" r="1.4" style="--i:1"/><circle cy="-3" r="1.4" style="--i:0"/><circle cy="3" r="1.4" style="--i:0"/><circle cy="6" r="1.4" style="--i:1"/></g></svg></span></summary>
+      <p class="faq__answer">A basic setup takes one to two weeks, and most single-company implementations go live in three to four weeks. Complex projects with multiple companies or system customisation run up to two months. Larger projects with multiple outlets, POS integration and a full migration can run longer: a six-outlet retail implementation we delivered took about three months.</p>
+    </details>
+    <details class="faq__item" name="faq" data-reveal>
+      <summary><span class="h4">What makes an implementation take longer than expected?</span><span class="faq__toggle" aria-hidden="true"><svg viewBox="-10 -10 20 20"><g><circle cx="-6" r="1.4"/><circle cx="-3" r="1.4"/><circle r="1.4"/><circle cx="3" r="1.4"/><circle cx="6" r="1.4"/></g><g class="faq__v"><circle cy="-6" r="1.4" style="--i:1"/><circle cy="-3" r="1.4" style="--i:0"/><circle cy="3" r="1.4" style="--i:0"/><circle cy="6" r="1.4" style="--i:1"/></g></svg></span></summary>
+      <p class="faq__answer">Two things, most often. Form customisation is open-ended unless the scope is agreed upfront. And database setup depends on the client: the project waits while opening balances, master data and sign-off come across. That is why we scope and price implementation as its own piece of work.</p>
+    </details>
+    <details class="faq__item" name="faq" data-reveal>
+      <summary><span class="h4">What is included in outsourced accounting?</span><span class="faq__toggle" aria-hidden="true"><svg viewBox="-10 -10 20 20"><g><circle cx="-6" r="1.4"/><circle cx="-3" r="1.4"/><circle r="1.4"/><circle cx="3" r="1.4"/><circle cx="6" r="1.4"/></g><g class="faq__v"><circle cy="-6" r="1.4" style="--i:1"/><circle cy="-3" r="1.4" style="--i:0"/><circle cy="3" r="1.4" style="--i:0"/><circle cy="6" r="1.4" style="--i:1"/></g></svg></span></summary>
+      <p class="faq__answer">We collect your documents, maintain the books, and prepare your accounts monthly, bi-monthly or quarterly. Accounts come with a Myconsult HealthCheck report, a plain-language read of your balance sheet and income statement. Outsourced accounting starts from RM800 per month for a single company with straightforward transaction volume.</p>
+    </details>
+    <details class="faq__item" name="faq" data-reveal>
+      <summary><span class="h4">Do you handle payroll as well as accounting?</span><span class="faq__toggle" aria-hidden="true"><svg viewBox="-10 -10 20 20"><g><circle cx="-6" r="1.4"/><circle cx="-3" r="1.4"/><circle r="1.4"/><circle cx="3" r="1.4"/><circle cx="6" r="1.4"/></g><g class="faq__v"><circle cy="-6" r="1.4" style="--i:1"/><circle cy="-3" r="1.4" style="--i:0"/><circle cy="3" r="1.4" style="--i:0"/><circle cy="6" r="1.4" style="--i:1"/></g></svg></span></summary>
+      <p class="faq__answer">Yes. Payroll starts from RM350 per month, including EPF, SOCSO, EIS and PCB submissions, and can be taken with or without outsourced accounting.</p>
+    </details>
+    <details class="faq__item" name="faq" data-reveal>
+      <summary><span class="h4">Is Myconsult HealthCheck included?</span><span class="faq__toggle" aria-hidden="true"><svg viewBox="-10 -10 20 20"><g><circle cx="-6" r="1.4"/><circle cx="-3" r="1.4"/><circle r="1.4"/><circle cx="3" r="1.4"/><circle cx="6" r="1.4"/></g><g class="faq__v"><circle cy="-6" r="1.4" style="--i:1"/><circle cy="-3" r="1.4" style="--i:0"/><circle cy="3" r="1.4" style="--i:0"/><circle cy="6" r="1.4" style="--i:1"/></g></svg></span></summary>
+      <p class="faq__answer">It is included for outsourced accounting clients on more than RM1,500 per month, and available for RM100 per month on smaller plans. AutoCount and SQL Accounting users can also request a free one-off HealthCheck.</p>
+    </details>
+    <details class="faq__item" name="faq" data-reveal>
+      <summary><span class="h4">What does e-Invoice setup involve?</span><span class="faq__toggle" aria-hidden="true"><svg viewBox="-10 -10 20 20"><g><circle cx="-6" r="1.4"/><circle cx="-3" r="1.4"/><circle r="1.4"/><circle cx="3" r="1.4"/><circle cx="6" r="1.4"/></g><g class="faq__v"><circle cy="-6" r="1.4" style="--i:1"/><circle cy="-3" r="1.4" style="--i:0"/><circle cy="3" r="1.4" style="--i:0"/><circle cy="6" r="1.4" style="--i:1"/></g></svg></span></summary>
+      <p class="faq__answer">We link your accounting system to the MyInvois portal, set up your documents so everything requiring e-Invoice submission carries the QR code, and run one-on-one training with your team. For new AutoCount and SQL Accounting clients this is included in the implementation; adding it to an existing system costs RM2,000.</p>
+    </details>
+    <details class="faq__item" name="faq" data-reveal>
+      <summary><span class="h4">Can you handle e-Invoice submission for us?</span><span class="faq__toggle" aria-hidden="true"><svg viewBox="-10 -10 20 20"><g><circle cx="-6" r="1.4"/><circle cx="-3" r="1.4"/><circle r="1.4"/><circle cx="3" r="1.4"/><circle cx="6" r="1.4"/></g><g class="faq__v"><circle cy="-6" r="1.4" style="--i:1"/><circle cy="-3" r="1.4" style="--i:0"/><circle cy="3" r="1.4" style="--i:0"/><circle cy="6" r="1.4" style="--i:1"/></g></svg></span></summary>
+      <p class="faq__answer">For outsourced accounting clients, we handle self-billed e-Invoice submission each month, quoted together with your accounting fee.</p>
+    </details>
+    <details class="faq__item" name="faq" data-reveal>
+      <summary><span class="h4">Can you support AutoCount or SQL Accounting bought from another dealer?</span><span class="faq__toggle" aria-hidden="true"><svg viewBox="-10 -10 20 20"><g><circle cx="-6" r="1.4"/><circle cx="-3" r="1.4"/><circle r="1.4"/><circle cx="3" r="1.4"/><circle cx="6" r="1.4"/></g><g class="faq__v"><circle cy="-6" r="1.4" style="--i:1"/><circle cy="-3" r="1.4" style="--i:0"/><circle cy="3" r="1.4" style="--i:0"/><circle cy="6" r="1.4" style="--i:1"/></g></svg></span></summary>
+      <p class="faq__answer">Yes. We take over support with a dealer change form, with no switching fee.</p>
+    </details>
+  </div>
+</section>
+
+<!-- Site footer (theme template part, not an ACF block)
+     ACF options page: cta_title (text), cta_address (textarea), cta_button (link), phone (text), email (email),
+     contact_address (textarea), copyright (text); menus: wp_nav_menu('footer-solutions'), ('footer'), ('legal') -->
+<footer class="footer">
+  <div class="footer__brand" data-reveal>
+    <img class="footer__orb" src="assets/footer-orb.png" alt="" width="205" height="205">
+    <img class="footer__logo" src="assets/myconsult-logo.svg" alt="MyConsult" width="114" height="33">
+  </div>
+
+  <div class="footer__main">
+    <div class="footer__card" data-reveal>
+      <div class="footer__cta">
+        <h2 class="h2">Book an<br>Appointment</h2>
+        <p class="body">D-12-3A, Menara Mitraland, Kota Damansara, 47810 Petaling Jaya, Selangor</p>
+        <a class="btn" href="#"><span class="button_label">Speak to us</span><svg class="btn__arrow" viewBox="-4 -4 210 168" aria-hidden="true"><circle cx="15" cy="80" r="15.5" opacity="0.25" style="--i:0"/><circle cx="58" cy="80" r="15.5" opacity="0.45" style="--i:1"/><circle cx="100" cy="80" r="15.5" opacity="0.7" style="--i:2"/><circle cx="143" cy="16" r="15.5" style="--i:3"/><circle cx="143" cy="80" r="15.5" style="--i:3"/><circle cx="143" cy="144" r="15.5" style="--i:3"/><circle cx="165" cy="48" r="15.5" style="--i:4"/><circle cx="165" cy="112" r="15.5" style="--i:4"/><circle cx="186" cy="80" r="15.5" style="--i:5"/></svg></a>
+      </div>
+      <div class="footer__contact">
+        <span class="chip">Contact details</span>
+        <p class="body"><a href="tel:+60376241906">03-7624 1906</a><br><a href="mailto:info@myconsult.com.my">info@myconsult.com.my</a></p>
+        <p class="body">D-12-3A, Menara Mitraland, Kota Damansara, 47810 Petaling Jaya, Selangor</p>
+      </div>
+    </div>
+
+    <div class="footer__links" data-reveal data-delay="0.15">
+      <span class="chip">Solutions</span>
+      <ul class="footer__solutions">
+        <li><a class="h3" href="#">Business Process Automation</a></li>
+        <li><a class="h3" href="#">Accounting &amp; Financial Solutions</a></li>
+        <li><a class="h3" href="#">Payroll &amp; HR Solutions</a></li>
+      </ul>
+      <ul class="footer__nav">
+        <li><a class="button_label" href="#">About</a></li>
+        <li><a class="button_label" href="#">Blog</a></li>
+        <li><a class="button_label" href="#">Case Studies</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer__legal">
+    <p class="body">&copy; 2026 My Consult Sdn Bhd.</p>
+    <a class="body" href="#">Privacy Policy</a>
+    <a class="body" href="#">Terms &amp; Conditions</a>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.3.27/dist/lenis.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/SplitText.min.js"></script>
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"}}</script>
+<script type="module" src="js/arcs.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

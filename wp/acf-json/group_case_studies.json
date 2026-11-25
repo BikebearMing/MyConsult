@@ -1,0 +1,84 @@
+{
+    "key": "group_case_studies",
+    "title": "Block: Case studies",
+    "fields": [
+        {
+            "key": "field_case_studies_chip",
+            "label": "Chip",
+            "name": "chip",
+            "type": "text"
+        },
+        {
+            "key": "field_case_studies_title",
+            "label": "Title",
+            "name": "title",
+            "type": "text"
+        },
+        {
+            "key": "field_case_studies_cases",
+            "label": "Cases",
+            "name": "cases",
+            "type": "repeater",
+            "layout": "block",
+            "button_label": "Add case study",
+            "sub_fields": [
+                {
+                    "key": "field_case_studies_cases_image",
+                    "label": "Image",
+                    "name": "image",
+                    "type": "image",
+                    "return_format": "id",
+                    "preview_size": "medium"
+                },
+                {
+                    "key": "field_case_studies_cases_title",
+                    "label": "Title",
+                    "name": "title",
+                    "type": "text"
+                },
+                {
+                    "key": "field_case_studies_cases_text",
+                    "label": "Text",
+                    "name": "text",
+                    "type": "textarea",
+                    "rows": 4,
+                    "new_lines": ""
+                },
+                {
+                    "key": "field_case_studies_cases_solution",
+                    "label": "Solution",
+                    "name": "solution",
+                    "type": "textarea",
+                    "rows": 3,
+                    "new_lines": ""
+                },
+                {
+                    "key": "field_case_studies_cases_results",
+                    "label": "Results",
+                    "name": "results",
+                    "type": "textarea",
+                    "rows": 3,
+                    "new_lines": ""
+                },
+                {
+                    "key": "field_case_studies_cases_link",
+                    "label": "Link",
+                    "name": "link",
+                    "type": "link",
+                    "return_format": "array"
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf/case-studies"
+            }
+        ]
+    ],
+    "active": true,
+    "modified": 1793607803
+}

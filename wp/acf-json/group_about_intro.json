@@ -1,0 +1,41 @@
+{
+    "key": "group_about_intro",
+    "title": "Block: About intro",
+    "fields": [
+        {
+            "key": "field_about_intro_title",
+            "label": "Title",
+            "name": "title",
+            "type": "textarea",
+            "rows": 3,
+            "new_lines": "br",
+            "instructions": "Line breaks are kept."
+        },
+        {
+            "key": "field_about_intro_text",
+            "label": "Text",
+            "name": "text",
+            "type": "textarea",
+            "rows": 5,
+            "new_lines": ""
+        },
+        {
+            "key": "field_about_intro_button",
+            "label": "Button",
+            "name": "button",
+            "type": "link",
+            "return_format": "array"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf/about-intro"
+            }
+        ]
+    ],
+    "active": true,
+    "modified": 1793607803
+}

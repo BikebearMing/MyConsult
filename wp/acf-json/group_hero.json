@@ -1,0 +1,49 @@
+{
+    "key": "group_hero",
+    "title": "Block: Hero",
+    "fields": [
+        {
+            "key": "field_hero_eyebrow",
+            "label": "Eyebrow",
+            "name": "eyebrow",
+            "type": "text"
+        },
+        {
+            "key": "field_hero_title",
+            "label": "Title",
+            "name": "title",
+            "type": "text"
+        },
+        {
+            "key": "field_hero_text",
+            "label": "Text",
+            "name": "text",
+            "type": "textarea",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_hero_arc_left_label",
+            "label": "Left arc label",
+            "name": "arc_left_label",
+            "type": "text"
+        },
+        {
+            "key": "field_hero_arc_right_label",
+            "label": "Right arc label",
+            "name": "arc_right_label",
+            "type": "text"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf/hero"
+            }
+        ]
+    ],
+    "active": true,
+    "modified": 1793607803
+}

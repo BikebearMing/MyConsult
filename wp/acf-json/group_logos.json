@@ -1,0 +1,58 @@
+{
+    "key": "group_logos",
+    "title": "Block: Logo strip",
+    "fields": [
+        {
+            "key": "field_logos_label",
+            "label": "Label",
+            "name": "label",
+            "type": "text"
+        },
+        {
+            "key": "field_logos_logos",
+            "label": "Logos",
+            "name": "logos",
+            "type": "repeater",
+            "layout": "table",
+            "button_label": "Add logo",
+            "sub_fields": [
+                {
+                    "key": "field_logos_logos_logo",
+                    "label": "Logo",
+                    "name": "logo",
+                    "type": "image",
+                    "return_format": "id",
+                    "preview_size": "medium",
+                    "instructions": "White logo on transparent, exported at 3x (e.g. from Figma). Shown at a third of its pixel size."
+                },
+                {
+                    "key": "field_logos_logos_name",
+                    "label": "Name",
+                    "name": "name",
+                    "type": "text",
+                    "instructions": "Used as alt text, and shown as text until a logo is uploaded."
+                },
+                {
+                    "key": "field_logos_logos_gap",
+                    "label": "Gap",
+                    "name": "gap",
+                    "type": "number",
+                    "default_value": 92,
+                    "append": "px",
+                    "instructions": "Space after this logo, in design px."
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf/logos"
+            }
+        ]
+    ],
+    "active": true,
+    "modified": 1793607803
+}
