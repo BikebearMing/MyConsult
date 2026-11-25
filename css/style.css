@@ -409,3 +409,23 @@ body { background: var(--bg-gradient), var(--bg); color: var(--text); }
 .footer__legal { display: flex; margin-top: 1.597vw; color: var(--text-muted); }                   /* 23 below the card */
 .footer__legal a { margin-left: 1.528vw; }                                                           /* 22 */
 .footer__legal a:first-of-type { margin-left: 12.569vw; }                                            /* 181 */
+
+/* ---------- page hero (top of inner pages: breadcrumb, title, ring + orb on the dome, intro) ---------- */
+.page-hero { position: relative; isolation: isolate; padding: 10.764vw var(--sidepadding-m) 5.243vw; text-align: center; } /* 155 to the breadcrumb, 75.5 to the next section's chip */
+/* the home hero's glow, with the dark dome (r 2322, top 410 from the page top) drawn over it as a gradient */
+.page-hero::before { content: ""; position: absolute; z-index: -1; inset: 0 0 auto; height: 38.889vw; pointer-events: none;   /* 560: past the dome's edges (522) */
+  background:
+    radial-gradient(circle 161.25vw at 50% 189.722vw, var(--bg) calc(100% - 1px), transparent 100%),
+    radial-gradient(ellipse 42% 68% at 0% 92%, rgba(160, 70, 235, 0.9), rgba(160, 70, 235, 0) 75%),
+    radial-gradient(ellipse 42% 64% at 100% 92%, rgba(225, 95, 150, 0.8), rgba(225, 95, 150, 0) 75%),
+    linear-gradient(180deg, rgba(20, 28, 60, 0), #141C3C 22%, #1B2350 55%, #2A2A5C); }      /* darker and more violet than the home stage */
+.page-hero__crumbs { display: block; color: #CBECFD; font-size: 0.764vw; font-weight: 400; line-height: 1.636; text-transform: uppercase; letter-spacing: 0.08em; } /* 11px on an 18 line */
+.page-hero__crumbs a { text-decoration: none; transition: color 0.3s; }
+.page-hero__crumbs a:is(:hover, :focus-visible) { color: var(--pink); }
+.page-hero__title { margin-top: 0.486vw; }                                              /* 7 */
+.page-hero__orb { position: relative; display: grid; place-items: center; width: 11.458vw; aspect-ratio: 1; margin: 4.653vw auto 0; } /* 165 ring, 67 below the title */
+.page-hero__orb svg { position: absolute; inset: 0; width: 100%; height: 100%; fill: none; stroke-width: 1.5; }
+.page-hero__orb img { width: 10.903vw; max-width: none; animation: orb-float 6s ease-in-out infinite; }   /* 157 png, the orb itself 141 */
+@media (prefers-reduced-motion: reduce) { .page-hero__orb img { animation: none; } }
+.page-hero__heading { max-width: 45.833vw; margin: 5.078vw auto 0; }                    /* 660 wide, 73.12 below the ring */
+.page-hero__text { max-width: 51.389vw; margin: 1.667vw auto 0; color: var(--text-muted); } /* 740 wide, 24 below the heading */

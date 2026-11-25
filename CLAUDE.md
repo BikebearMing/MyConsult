@@ -1,7 +1,7 @@
 # MyConsult website
 
 Marketing site for MyConsult, a Malaysian accounting consultancy. Live on WordPress at
-https://myconsult.bear-demo.com (staging/demo host). One page so far: Home.
+https://myconsult.bear-demo.com (staging/demo host). Pages: Home (live), About (in progress: prototype `about.html`, first section only).
 
 ## How the project is set up
 
@@ -20,7 +20,7 @@ Content (text, images, links) does **not** live in the repo. It lives in the Wor
 ## Repo map
 
 ```
-index.html                 prototype page; each <section> starts with a comment naming its ACF block and fields
+index.html, about.html     prototype pages; each <section> starts with a comment naming its ACF block and fields
 css/style.css              all styles (desktop, vw-based, see Conventions)
 js/main.js                 Lenis smooth scroll, GSAP text/section reveals, logo marquee, service-card animations
 js/arcs.js + js/orb.js     hero: three.js particles + 3D orb (ES modules), scroll-pinned hero
@@ -50,6 +50,7 @@ dist/myconsult.zip         last built theme (build output)
 | Block (`acf/...`) | Fields |
 |---|---|
 | `hero` | eyebrow, title, text, arc_left_label, arc_right_label (side cards are decorative, hard-coded) |
+| `page-hero` | title (also the last breadcrumb; falls back to the page title), heading, text (line breaks kept); ring and orb are decorative |
 | `about-intro` | title (line breaks kept), text, button (link) |
 | `logos` | label, logos (repeater: logo image, name, gap in design px) |
 | `services` | chip, title, text, slides, labelled "Cards" (repeater: visual select, title, points repeater, button) |
