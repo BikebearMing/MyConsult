@@ -138,3 +138,4 @@ Content can be edited by hand in the block editor, or scripted through the WP RE
 No credentials are stored in the repo. WordPress admin access comes from the site owner.
 Design files: Figma "[WEB] MyConsult" (page "Rework" holds the current homepage frames). Use your own Figma access token, and
 never commit one.
+
