@@ -183,6 +183,44 @@
   </div>
 </section>
 
+<!-- ACF block: faq (same block and classes as the home page)
+     fields: title (textarea, line breaks kept), items (repeater: question (text), answer (textarea), open toggle),
+             new, not in the theme yet: cta_title (textarea, line breaks kept), cta_text (textarea), cta_button (link);
+             the CTA box under the accordion shows only when it has a title.
+     PLACEHOLDER answers: only the second answer comes from the design; the other four are written from this page's own copy. -->
+<section class="faq">
+  <h2 class="h2">Frequently Asked<br>Questions.</h2>
+  <div class="faq__list">
+    <details class="faq__item" name="faq" data-reveal open>
+      <summary><span class="h4">What does Myconsult do?</span><span class="faq__toggle" aria-hidden="true"><svg viewBox="-10 -10 20 20"><g><circle cx="-6" r="1.4"/><circle cx="-3" r="1.4"/><circle r="1.4"/><circle cx="3" r="1.4"/><circle cx="6" r="1.4"/></g><g class="faq__v"><circle cy="-6" r="1.4" style="--i:1"/><circle cy="-3" r="1.4" style="--i:0"/><circle cy="3" r="1.4" style="--i:0"/><circle cy="6" r="1.4" style="--i:1"/></g></svg></span></summary>
+      <p class="faq__answer">Myconsult is an accounting software and outsourced accounting firm. We implement and support AutoCount and SQL Accounting, and handle accounting and payroll on clients’ behalf.</p>
+    </details>
+    <details class="faq__item" name="faq" data-reveal>
+      <summary><span class="h4">How long has Myconsult been in business?</span><span class="faq__toggle" aria-hidden="true"><svg viewBox="-10 -10 20 20"><g><circle cx="-6" r="1.4"/><circle cx="-3" r="1.4"/><circle r="1.4"/><circle cx="3" r="1.4"/><circle cx="6" r="1.4"/></g><g class="faq__v"><circle cy="-6" r="1.4" style="--i:1"/><circle cy="-3" r="1.4" style="--i:0"/><circle cy="3" r="1.4" style="--i:0"/><circle cy="6" r="1.4" style="--i:1"/></g></svg></span></summary>
+      <p class="faq__answer">Myconsult was founded in 2003 in Kota Damansara, Selangor. It has been an authorised AutoCount and SQL Accounting dealer since 2013.</p>
+    </details>
+    <details class="faq__item" name="faq" data-reveal>
+      <summary><span class="h4">Is Myconsult an authorised AutoCount and SQL Accounting dealer?</span><span class="faq__toggle" aria-hidden="true"><svg viewBox="-10 -10 20 20"><g><circle cx="-6" r="1.4"/><circle cx="-3" r="1.4"/><circle r="1.4"/><circle cx="3" r="1.4"/><circle cx="6" r="1.4"/></g><g class="faq__v"><circle cy="-6" r="1.4" style="--i:1"/><circle cy="-3" r="1.4" style="--i:0"/><circle cy="3" r="1.4" style="--i:0"/><circle cy="6" r="1.4" style="--i:1"/></g></svg></span></summary>
+      <p class="faq__answer">Yes. Myconsult has been an authorised dealer for both AutoCount and SQL Accounting since 2013, and has completed over 1,000 implementations for Malaysian SMEs.</p>
+    </details>
+    <details class="faq__item" name="faq" data-reveal>
+      <summary><span class="h4">Can Myconsult help me choose between AutoCount and SQL Accounting?</span><span class="faq__toggle" aria-hidden="true"><svg viewBox="-10 -10 20 20"><g><circle cx="-6" r="1.4"/><circle cx="-3" r="1.4"/><circle r="1.4"/><circle cx="3" r="1.4"/><circle cx="6" r="1.4"/></g><g class="faq__v"><circle cy="-6" r="1.4" style="--i:1"/><circle cy="-3" r="1.4" style="--i:0"/><circle cy="3" r="1.4" style="--i:0"/><circle cy="6" r="1.4" style="--i:1"/></g></svg></span></summary>
+      <p class="faq__answer">Yes. Tell us how you sell, what you stock and where you plan to grow, and we will recommend the system that fits, even if it is one we do not sell.</p>
+    </details>
+    <details class="faq__item" name="faq" data-reveal>
+      <summary><span class="h4">Does Myconsult provide tax filing or company secretarial services?</span><span class="faq__toggle" aria-hidden="true"><svg viewBox="-10 -10 20 20"><g><circle cx="-6" r="1.4"/><circle cx="-3" r="1.4"/><circle r="1.4"/><circle cx="3" r="1.4"/><circle cx="6" r="1.4"/></g><g class="faq__v"><circle cy="-6" r="1.4" style="--i:1"/><circle cy="-3" r="1.4" style="--i:0"/><circle cy="3" r="1.4" style="--i:0"/><circle cy="6" r="1.4" style="--i:1"/></g></svg></span></summary>
+      <p class="faq__answer">No. We do not provide tax filing or company secretarial services. We work alongside your existing tax agent and company secretary.</p>
+    </details>
+  </div>
+  <div class="faq__cta" data-reveal>
+    <h2 class="h2">Not sure which<br>system fits your<br>business?</h2>
+    <div class="faq__cta-body">
+      <p class="body">Tell us how you sell, what you stock and where you plan to grow. We will recommend the system that fits, even if it is one we do not sell.</p>
+      <a class="btn" href="#"><span class="button_label">Book a free consultation</span><svg class="btn__arrow" viewBox="-4 -4 210 168" aria-hidden="true"><circle cx="15" cy="80" r="15.5" opacity="0.25" style="--i:0"/><circle cx="58" cy="80" r="15.5" opacity="0.45" style="--i:1"/><circle cx="100" cy="80" r="15.5" opacity="0.7" style="--i:2"/><circle cx="143" cy="16" r="15.5" style="--i:3"/><circle cx="143" cy="80" r="15.5" style="--i:3"/><circle cx="143" cy="144" r="15.5" style="--i:3"/><circle cx="165" cy="48" r="15.5" style="--i:4"/><circle cx="165" cy="112" r="15.5" style="--i:4"/><circle cx="186" cy="80" r="15.5" style="--i:5"/></svg></a>
+    </div>
+  </div>
+</section>
+
 <!-- Site footer (theme template part, not an ACF block)
      ACF options page: cta_title (text), cta_address (textarea), cta_button (link), phone (text), email (email),
      contact_address (textarea), copyright (text); menus: wp_nav_menu('footer-solutions'), ('footer'), ('legal') -->

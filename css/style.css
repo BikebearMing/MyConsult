@@ -307,6 +307,14 @@ body { background: var(--bg-gradient), var(--bg); color: var(--text); }
 .faq__item::details-content { block-size: 0; overflow: hidden; transition: block-size 0.45s cubic-bezier(0.65, 0, 0.35, 1), content-visibility 0.45s allow-discrete; }
 .faq__item[open]::details-content { block-size: auto; }
 @media (prefers-reduced-motion: reduce) { .faq__item::details-content { transition: none; } }
+/* CTA box under the accordion (about page): sits in the list column, 64.5 below the last question */
+.faq__cta { grid-column: 2; display: grid; grid-template-columns: 26.563vw 1fr; margin-top: 4.479vw; padding: 3.111vw 0 3.764vw 2.708vw;   /* divider 421.5 from the left; 45 top, 54 bottom, heading 39 in */
+  border-radius: 0.694vw; background: #0F1E30; }
+.faq__cta-body { position: relative; padding: 0.563vw 1.389vw 0 6.91vw; }                 /* copy 99.5 after the divider, 8 lower than the heading */
+.faq__cta-body::before { content: ""; position: absolute; left: 0; top: 0.563vw; bottom: 0; border-left: 1px dotted rgba(255, 255, 255, 0.35); }
+.faq__cta-body .body { max-width: 19.097vw; color: var(--text-muted); }                   /* 275 wide */
+.faq__cta-body .btn { margin-top: 2.292vw; }                                              /* 33 below the copy */
+.faq:has(.faq__cta) { padding-bottom: 4.403vw; }                                          /* 63 from the box to the footer */
 
 /* ---------- header (fixed, 870 wide pill centred 7 from the top) ---------- */
 .header { position: fixed; z-index: 50; top: 0.486vw; left: 50%; translate: -50% 0; width: 60.417vw; height: 3.056vw;   /* 7, 870, 44 (14 + label line + 14) */
@@ -446,7 +454,7 @@ body { background: var(--bg-gradient), var(--bg); color: var(--text); }
 .social img { width: 1.042vw; }                                                                /* 15 */
 
 /* ---------- about: technology partners and certifications ---------- */
-.partners { padding: 9.5vw 0 6.944vw; text-align: center; }                                     /* heading 137 below the leadership cards */
+.partners { padding: 9.5vw 0 11.84vw; text-align: center; }                                     /* heading 137 below the leadership cards; FAQ 170.5 below the certification bar */
 .partners__groups { display: flex; justify-content: center; margin-top: 5.083vw; text-align: left; }   /* 73 below the heading */
 .partner-group { display: grid; grid-template-columns: 16.25vw 13.819vw; }                     /* copy 234 | tiles 199 */
 .partner-group + .partner-group { margin-left: 3.507vw; padding-left: 3.715vw; border-left: 1px dotted rgba(255, 255, 255, 0.35); } /* 50.5 | divider | 53.5 */
