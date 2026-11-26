@@ -31,18 +31,26 @@
             "button_label": "Add card",
             "sub_fields": [
                 {
-                    "key": "field_services_slides_visual",
-                    "label": "Visual",
-                    "name": "visual",
-                    "type": "select",
-                    "instructions": "The decorative cards at the top of the card.",
-                    "choices": {
-                        "dashboard": "Accuracy + revenue",
-                        "payroll": "Payroll processed + employee satisfaction",
-                        "automation": "Automation impact + time saved"
-                    },
-                    "default_value": "dashboard",
-                    "return_format": "value"
+                    "key": "field_services_slides_image_back",
+                    "label": "Back image",
+                    "name": "image_back",
+                    "type": "image",
+                    "instructions": "The image behind. Transparent WebP or PNG, about 750 px wide.",
+                    "return_format": "array",
+                    "preview_size": "medium",
+                    "library": "all",
+                    "mime_types": "webp, png, jpg, jpeg"
+                },
+                {
+                    "key": "field_services_slides_image_front",
+                    "label": "Front image",
+                    "name": "image_front",
+                    "type": "image",
+                    "instructions": "The image in front. Transparent WebP or PNG, about 750 px wide.",
+                    "return_format": "array",
+                    "preview_size": "medium",
+                    "library": "all",
+                    "mime_types": "webp, png, jpg, jpeg"
                 },
                 {
                     "key": "field_services_slides_title",
@@ -86,5 +94,5 @@
         ]
     ],
     "active": true,
-    "modified": 1793607803
+    "modified": 1795670651
 }

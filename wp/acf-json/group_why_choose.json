@@ -1,0 +1,72 @@
+{
+    "key": "group_why_choose",
+    "title": "Block: Why choose",
+    "fields": [
+        {
+            "key": "field_why_choose_chip",
+            "label": "Chip",
+            "name": "chip",
+            "type": "text"
+        },
+        {
+            "key": "field_why_choose_title",
+            "label": "Title",
+            "name": "title",
+            "type": "text"
+        },
+        {
+            "key": "field_why_choose_text",
+            "label": "Text",
+            "name": "text",
+            "type": "textarea",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_why_choose_list_chip",
+            "label": "List chip",
+            "name": "list_chip",
+            "type": "text",
+            "instructions": "The small label above the three columns."
+        },
+        {
+            "key": "field_why_choose_items",
+            "label": "Columns",
+            "name": "items",
+            "type": "repeater",
+            "layout": "block",
+            "button_label": "Add column",
+            "max": 3,
+            "sub_fields": [
+                {
+                    "key": "field_why_choose_items_title",
+                    "label": "Title",
+                    "name": "title",
+                    "type": "textarea",
+                    "rows": 2,
+                    "new_lines": "br",
+                    "instructions": "Line breaks are kept."
+                },
+                {
+                    "key": "field_why_choose_items_text",
+                    "label": "Text",
+                    "name": "text",
+                    "type": "textarea",
+                    "rows": 4,
+                    "new_lines": ""
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf/why-choose"
+            }
+        ]
+    ],
+    "active": true,
+    "modified": 1795668135
+}

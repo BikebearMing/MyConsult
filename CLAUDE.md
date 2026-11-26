@@ -1,7 +1,7 @@
 # MyConsult website
 
 Marketing site for MyConsult, a Malaysian accounting consultancy. Live on WordPress at
-https://myconsult.bear-demo.com (staging/demo host). Pages: Home (live), About (in progress: prototype `about.html`, first section only).
+https://myconsult.bear-demo.com (staging/demo host). Pages: Home (live), About (in progress: sections 1-3 are in the prototype `about.html` and live as page ID 44, slug `about`).
 
 ## How the project is set up
 
@@ -12,7 +12,7 @@ There are two copies of the site, and the work flows one way:
    `wp/build.sh` zips `wp/` together with the prototype's `css/`, `js/` and `assets/` into `dist/myconsult.zip`.
 
 CSS and JS exist **only** in `css/` and `js/`; the theme has no copy of them. Section markup is the exception: it lives in two places,
-`index.html` and the theme's `render.php` / `parts/*.php`, so a markup change must be made in both.
+`index.html` / `about.html` and the theme's `render.php` files, so a markup change must be made in both.
 
 Content (text, images, links) does **not** live in the repo. It lives in the WordPress Home page's blocks and the
 "Site settings" options page, and the client edits it there.
@@ -22,15 +22,14 @@ Content (text, images, links) does **not** live in the repo. It lives in the Wor
 ```
 index.html, about.html     prototype pages; each <section> starts with a comment naming its ACF block and fields
 css/style.css              all styles (desktop, vw-based, see Conventions)
-js/main.js                 Lenis smooth scroll, GSAP text/section reveals, logo marquee, service-card animations
+js/main.js                 Lenis smooth scroll, GSAP text/section reveals, logo marquee, card-image fade-ins
 js/arcs.js + js/orb.js     hero: three.js particles + 3D orb (ES modules), scroll-pinned hero
-assets/                    logo, orb model (.glb), footer orb, case image
+assets/                    logo, orb model (.glb), footer orb, case image; about/ = the dashboard card images used by the home services and about what-we-do cards in the prototype (webp, extracted from the design PDF)
 wp/style.css               theme header only
-wp/functions.php           enqueues, menus, block registration, options page, template helpers (mc_btn, mc_arrow, mc_menu, mc_anchor)
+wp/functions.php           enqueues, menus, block registration, options page, template helpers (mc_btn, mc_arrow, mc_arrow_link, mc_menu, mc_anchor)
 wp/header.php, footer.php  header and footer (content from Site settings + 4 menus)
 wp/index.php               renders the_content (the page's blocks)
 wp/blocks/<name>/          block.json + render.php, one per section
-wp/parts/visual-*.php      the decorative dashboard-card pairs used by the services cards
 wp/acf-json/               ACF field groups (loaded automatically by ACF from the theme)
 wp/inc/seed.php            one-time content seed on first theme activation (already ran on the live site)
 wp/build.sh                builds dist/myconsult.zip
@@ -51,17 +50,20 @@ dist/myconsult.zip         last built theme (build output)
 |---|---|
 | `hero` | eyebrow, title, text, arc_left_label, arc_right_label (side cards are decorative, hard-coded) |
 | `page-hero` | title (also the last breadcrumb; falls back to the page title), heading, text (line breaks kept); ring and orb are decorative |
+| `what-we-do` | chip, title, cards (repeater: image_back, image_front (Media Library images; position and tilt come from the card's place in the row), title (line breaks kept), links (repeater: link), note (line breaks kept, optional)) |
+| `why-choose` | chip, title, text, list_chip, items, labelled "Columns" (repeater: title (line breaks kept), text) |
 | `about-intro` | title (line breaks kept), text, button (link) |
 | `logos` | label, logos (repeater: logo image, name, gap in design px) |
-| `services` | chip, title, text, slides, labelled "Cards" (repeater: visual select, title, points repeater, button) |
+| `services` | chip, title, text, slides, labelled "Cards" (repeater: image_back, image_front, title, points repeater, button) |
 | `case-studies` | chip, title, cases (repeater: image, title, text, solution, results, link) |
 | `faq` | title (line breaks kept), items (repeater: question, answer, open toggle) |
 
 - **Site settings** (options page): header_cta, cta_title, cta_address, cta_button, phone, email, contact_address,
   copyright (the year is added automatically).
 - **Menus** (Appearance > Menus): Header, Footer: solutions, Footer: links, Footer: legal. All links are `#` for now.
-- Services card visuals: `dashboard` (accuracy + revenue), `payroll` (payroll processed + employee satisfaction),
-  `automation` (automation impact + time saved). Their numbers are decorative and hard-coded in `wp/parts/`.
+- **Card images** (home `services`, about `what-we-do`): each card has a Back image and a Front image set from the Media Library.
+  Position, width and tilt come from the card's place in the row (CSS), not from the image. Images in blocks are always
+  Media Library image fields, never a dropdown of built-in visuals.
 - Logos: upload **white logos on transparent background, exported at 3x**. Each displays at a third of its pixel height.
 
 ## Conventions
@@ -76,13 +78,17 @@ dist/myconsult.zip         last built theme (build output)
 - **Editing fields:** edit the JSON in `wp/acf-json/` (bump `modified`), rebuild and deploy. Editing field groups in
   wp-admin writes to the server's copy, which the next theme upload overwrites. If someone changed fields in wp-admin,
   use ACF's sync/export first.
+- **Blue glow + curve between sections** (home services/case studies, about what-we-do/why-choose): the upper section carries the
+  whole gradient (`transparent calc(100% - Nvw), #045A93`, to its very bottom, with 8vw extra bottom padding); the lower section has
+  no background, `margin-top: -8vw`, and a `::before` dome, so the curve is cut out of one continuous gradient. Don't split the
+  glow across the two sections.
 - **One block per section**, so the client can duplicate and reorder sections with Gutenberg's native tools.
 - **Comments:** each `<section>` in `index.html` carries a comment listing its block and fields. Keep it accurate.
 
 ## Making a change
 
 1. Change the prototype (`index.html`, `css/`, `js/`). Serve it locally (`python3 -m http.server` in the repo root) and check it.
-2. If markup changed, mirror it in `wp/blocks/<name>/render.php` or `wp/parts/`. If fields changed, update `wp/acf-json/`.
+2. If markup changed, mirror it in `wp/blocks/<name>/render.php`. If fields changed, update `wp/acf-json/`.
 3. Check in a browser at 1440x900, including scrolling, reloading mid-page and the animations. Playwright screenshots work well for this.
 4. `wp/build.sh`, then deploy.
 5. Update content in WordPress if the change needs new content.
@@ -128,7 +134,7 @@ Content can be edited by hand in the block editor, or scripted through the WP RE
   - all menu and button links are `#`
   - services card 3 ("e-Invoice and MyInvois") bullets 2–4 were written from earlier copy, because the mock repeated
     card 1's bullets; confirm with the client
-  - the hero side cards and services dashboard numbers are illustrative
+  - the hero side cards and the dashboard images on the cards are illustrative
 - **Header logo** is the theme asset `assets/myconsult-logo.svg`. Custom-logo support isn't wired up.
 - `orb.js` loads `lil-gui` for a debug panel (open the page with `?lab`); it's imported on every hero page load.
 - `dist/myconsult.zip` is committed. Either rebuild it before each deploy or gitignore it; don't hand-edit it.

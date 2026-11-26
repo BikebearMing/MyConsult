@@ -236,13 +236,16 @@ body { background: var(--bg-gradient), var(--bg); color: var(--text); }
   font: 700 0.625vw/1 var(--font-mono); letter-spacing: 0.04em; text-transform: uppercase; color: #fff; }
 
 /* ---------- services ---------- */
-.services { padding: 0 0 8.333vw; text-align: center; overflow: hidden;                  /* top spacing comes from .logos (184.07) */
-  background: linear-gradient(to bottom, transparent calc(100% - 13.889vw), #1D4776); }   /* blue glow that the case-studies dome curves over */
+/* Blue glow + curve, same method as .what / .why: this section carries the whole glow, fading in over its bottom padding to full
+   colour at its very bottom; the next section has no glow of its own and is pulled up 8vw over it, so its dome cuts the curve
+   out of one continuous gradient (no seam where the sections meet). */
+.services { padding: 0 0 16.333vw; text-align: center; overflow: hidden;                 /* top spacing comes from .logos (184.07); 120 from the cards to the dome top + the 8vw overlap */
+  background: linear-gradient(to bottom, transparent calc(100% - 18.333vw), #045A93); }   /* the glow starts 2vw behind the cards */
 .services__text { max-width: 29.861vw; margin: 1.181vw auto 0; color: var(--text-muted); }  /* 17 below the heading */
 /* three cards, 21 from the sides, 20 apart */
 .services__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.389vw; margin: 2.986vw 1.458vw 0; text-align: left; } /* 43 below the text */
 
-/* one card: the card pair on top (290 tall), then title, points and a button pinned to the bottom */
+/* one card: the image pair on top (290 tall), then title, points and a button pinned to the bottom */
 .service { position: relative; display: flex; flex-direction: column; padding: 21.181vw 2.222vw 2.431vw;   /* 305 top, 32 sides, 35 bottom */
   border-radius: 0.694vw; background: #0F1E30; }
 .service__visual { position: absolute; left: 0; right: 0; top: 0; height: 20.139vw; }
@@ -251,77 +254,23 @@ body { background: var(--bg-gradient), var(--bg); color: var(--text); }
 .service__bullet { flex: none; width: 0.833vw; fill: var(--pink); overflow: visible; }
 .service__btn { margin-top: auto; align-self: flex-start; }
 
-/* tilted dashboard cards (decorative): frosted card, thin light outline. Later in the markup = in front */
-.dash { position: absolute; border: 1px solid rgba(203, 236, 253, 0.3); border-radius: 0.903vw; color: #fff;   /* 13 radius */
-  background: linear-gradient(155deg, #1C2D43, #13233A); box-shadow: 0 1.389vw 2.778vw rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.06); }
-.dash__label { font: 400 0.764vw/1.2 var(--font-mono); text-transform: uppercase; color: #CBECFD; }                 /* 11px */
-.dash__value { margin-top: 1.458vw; font: 400 3.333vw/1 var(--font-serif); }                                       /* 48px */
-.dash__value--md { font-size: 2.778vw; }                                                                            /* 40px */
-.dash__delta { margin-top: 1.458vw; font: 400 0.764vw/1.2 var(--font-mono); text-transform: uppercase; color: #E8606E; }
-.dash__delta--tight { margin-top: 0.556vw; }
-.dash__head { display: flex; align-items: center; justify-content: space-between; margin-top: 1.111vw; }          /* 16 */
-.dash__head .dash__value { margin-top: 0; }
-.dash__row { position: absolute; left: 0.764vw; right: 0.764vw; bottom: 0.972vw; height: 3.056vw; display: flex; align-items: center; gap: 1.042vw;
-  padding: 0 1.042vw; border-radius: 0.764vw; background: rgba(255, 255, 255, 0.06); }                              /* 44 tall */
-.dash__row svg { flex: none; width: 1.528vw; fill: #E0567A; }
-.dash__row .tick { fill: none; stroke: #13233A; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
-.dash__row--trend { gap: 0.556vw; padding: 0 0.694vw; }                                                           /* 10 in */
-.dash__row--trend .dash__label { font-size: 0.625vw; }                                                              /* 9px */
-.dash__row--trend .dash__count { font-size: 0.972vw; }                                                              /* 14px */
-.dash__row .dash__label { white-space: nowrap; }
-.dash__row .dash__up { width: 0.972vw; fill: none; stroke: #E8606E; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
-.dash__count { margin-left: auto; font: 400 1.111vw/1 var(--font-mono); color: #E8606E; }                          /* 16px */
-.dash__count--inline { margin-left: 0; }
-
-/* card 1: accuracy (front) + revenue (behind) */
-.dash--revenue { left: 16.111vw; top: 0.417vw; width: 13.611vw; height: 14.167vw; rotate: 1.6deg; padding: 1.25vw 1.285vw; }  /* 196x204 at (232, 6) */
-.dash__chart { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
-.dash__line { fill: none; stroke: #D94FA8; stroke-width: 1.6; stroke-linejoin: round; stroke-linecap: round; }
-.dash__dots { fill: #D94FA8; }
-.dash__grid { stroke: rgba(203, 236, 253, 0.25); stroke-width: 0.8; stroke-dasharray: 1.5 2.5; }
-.dash__end { fill: #FF5C7A; }
-.dash__halo { position: absolute; left: 86.224%; top: 70.098%; width: 1.667vw; height: 1.667vw; margin: -0.833vw 0 0 -0.833vw; } /* r 12 at (169,143) of 196x204 */
-.dash__halo i { position: absolute; inset: 0; border-radius: 50%; background: #FF5C7A; animation: dash-pulse 1.8s ease-out infinite; }
-@keyframes dash-pulse { from { opacity: 0.45; transform: scale(0.5); } to { opacity: 0; transform: scale(1.6); } }
-@media (prefers-reduced-motion: reduce) { .dash__halo i { animation: none; opacity: 0.3; } }
-/* looping animations pause off-screen (js/main.js toggles .is-in) */
-.js :is(.logos, .services):not(.is-in) :is(.logos__track, .dash__halo i) { animation-play-state: paused; }
-.dash--accuracy { left: 2.778vw; top: 1.528vw; width: 16.111vw; height: 17.639vw; rotate: -5.4deg; padding: 1.181vw 1.597vw; } /* 232x254 at (40, 22) */
-.dash__ring { position: relative; width: 8.472vw; margin: 1.319vw auto 0; text-align: center; }                    /* 122 */
-.dash__ring svg { display: block; fill: none; stroke-width: 8; }
-.dash__ring-value { position: absolute; left: 0; right: 0; top: 28%; font: 400 2.569vw/1 var(--font-serif); }      /* 37px */
-.dash__ring .dash__label { position: absolute; left: 0; right: 0; top: 63%; font-size: 0.694vw; }
-
-/* card 2: payroll processed (behind) + employee satisfaction (front) */
-.dash--payroll { left: 3.819vw; top: 1.667vw; width: 12.5vw; height: 13.611vw; rotate: -3deg; padding: 1.25vw; }          /* 180x196 at (55, 24) */
-.dash__icon { flex: none; display: grid; place-items: center; width: 3.056vw; aspect-ratio: 1; border-radius: 0.694vw; /* 44, 10 radius */
-  border: 1px solid rgba(203, 236, 253, 0.2); background: rgba(255, 255, 255, 0.06); }
-.dash__icon svg { width: 1.528vw; fill: none; stroke: #E8606E; stroke-width: 1.5; stroke-linecap: round; }
-.dash--satisfaction { left: 16.667vw; top: 4.861vw; width: 13.194vw; height: 14.306vw; rotate: 1.5deg; padding: 1.25vw; } /* 190x206 at (240, 70) */
-.dash__stars { display: flex; gap: 0.347vw; margin-top: 1.111vw; }                                                 /* 5 apart, 16 below */
-.dash__stars svg { width: 1.25vw; fill: #E8336F; }                                                                  /* 18 */
-.dash__row .dash__spark { flex: 1; min-width: 0; width: auto; height: 1.667vw; fill: none; overflow: visible; }                  /* 24 tall */
-.dash__area { fill: rgba(217, 79, 168, 0.18); }
-.dash__trend { display: grid; gap: 0.208vw; text-align: right; }
-.dash__trend .dash__label { font-size: 0.625vw; }
-
-/* card 3: automation impact (behind) + time saved (front) */
-.dash--automation { left: 16.667vw; top: 2.083vw; width: 13.194vw; height: 13.611vw; rotate: 2deg; padding: 1.25vw; }    /* 190x196 at (240, 30) */
-.dash__gauge { position: relative; flex: none; width: 3.889vw; }                                                    /* 56 */
-.dash__gauge svg:first-child { display: block; fill: none; stroke-width: 4; stroke-linecap: round; }
-.dash__track { stroke: rgba(255, 255, 255, 0.08); }
-.dash__gear { position: absolute; inset: 30%; width: 40%; fill: none; stroke: #CBECFD; stroke-width: 1.6; }
-.dash--time { left: 2.778vw; top: 3.611vw; width: 13.611vw; height: 15.278vw; rotate: -4deg; padding: 1.25vw; }         /* 196x220 at (40, 52) */
-.dash--time .dash__delta { font-size: 0.694vw; }                                                                    /* 10px, clears the bars */
-.dash__unit { margin-top: 0.417vw; font: 500 0.833vw/1.2 var(--font-sans); color: rgba(255, 255, 255, 0.75); }      /* 12px */
-.dash__bars { position: absolute; right: 1.25vw; bottom: 2.222vw; width: 5vw; height: 7.639vw; display: flex; align-items: flex-end; gap: 0.347vw; } /* 72x110, month row under it */
-.dash__bars i { flex: 1; height: var(--h); border-radius: 99px 99px 0.139vw 0.139vw; background: linear-gradient(to top, #E8606E, #D64FBF); }
-.dash__months { position: absolute; right: 1.25vw; bottom: 1.25vw; width: 5vw; display: flex; gap: 0.347vw; font: 400 0.556vw/1 var(--font-mono); color: rgba(203, 236, 253, 0.6); } /* 8px */
-.dash__months span { flex: 1; text-align: center; }
+/* the card's two dashboard images (decorative): card px (left, top) of each image's own box, then its tilt, set by the card's place
+   in the row (1st, 2nd, 3rd, then repeating); the front image comes later in the markup. The images carry a thin transparent margin, so each box is a little
+   larger than the card drawn in it. Sizes are for the design's own images, in the
+   order revenue impact, accuracy rate, payroll processed, employee satisfaction, automation impact, time saved */
+.service__img { position: absolute; max-width: none; }
+.service:nth-child(3n+1) .service__img--back { left: 15.701vw; top: 0; width: 14.431vw; rotate: 1.6deg; }           /* 207.8 wide at (226.1, 0) */
+.service:nth-child(3n+1) .service__img--front { left: 2.292vw; top: 1.007vw; width: 17.076vw; rotate: -5.4deg; }    /* 245.9 at (33, 14.5) */
+.service:nth-child(3n+2) .service__img--back { left: 3.444vw; top: 1.278vw; width: 13.25vw; rotate: -3deg; }        /* 190.8 at (49.6, 18.4) */
+.service:nth-child(3n+2) .service__img--front { left: 16.271vw; top: 4.444vw; width: 13.986vw; rotate: 1.5deg; }    /* 201.4 at (234.3, 64) */
+.service:nth-child(3n+3) .service__img--back { left: 16.271vw; top: 1.681vw; width: 13.986vw; rotate: 2deg; }       /* 201.4 at (234.3, 24.2) */
+.service:nth-child(3n+3) .service__img--front { left: 2.368vw; top: 3.153vw; width: 14.431vw; rotate: -4deg; }      /* 207.8 at (34.1, 45.4) */
+/* the logo strip pauses off-screen (js/main.js toggles .is-in) */
+.js .logos:not(.is-in) .logos__track { animation-play-state: paused; }
 
 /* ---------- case studies ---------- */
 .cases { position: relative; isolation: isolate; overflow: hidden; padding: 9.479vw 1.667vw 10.417vw; text-align: center; /* 138.5 from the dome top to the chip (the chip's line box adds 2), 150 below the card; clipped so the dome doesn't extend the page */
-  background: linear-gradient(#1D4776, var(--bg) 7.014vw); }                                   /* blue shows in the corners outside the dome */
+  margin-top: -8vw; }                                                                          /* no background: the corners outside the dome show the glow of .services above */
 .cases::before { content: ""; position: absolute; z-index: -1; left: 50%; top: 0; width: 363.472vw; aspect-ratio: 1;   /* the dome: r 2617, edges 101 lower */
   translate: -50% 0; border-radius: 50%; background: var(--bg); }
 .case { display: grid; grid-template-columns: 32.708vw 1fr; min-height: 30.625vw; margin-top: 3.819vw;          /* image 471, card 441 tall, 55 below the heading */
@@ -401,6 +350,9 @@ body { background: var(--bg-gradient), var(--bg); color: var(--text); }
 .footer .chip { font-size: 0.764vw; }                                                               /* 11, larger than the section chips */
 .footer a { text-decoration: none; transition: color 0.3s; }
 .footer a:is(:hover, :focus-visible) { color: var(--pink); }
+.footer a.btn.btn:is(:hover, :focus-visible) {
+  color: white;
+}
 .footer__links { display: flex; flex-direction: column; align-items: flex-start; padding: 0.486vw 0 0.944vw; } /* chip 7 below the card top */
 .footer__solutions { margin-top: 1.111vw; display: grid; gap: 0.444vw; }                            /* 16 below the chip, lines 46 apart */
 .footer__solutions a { display: inline-block; }
@@ -429,3 +381,52 @@ body { background: var(--bg-gradient), var(--bg); color: var(--text); }
 @media (prefers-reduced-motion: reduce) { .page-hero__orb img { animation: none; } }
 .page-hero__heading { max-width: 45.833vw; margin: 5.078vw auto 0; }                    /* 660 wide, 73.12 below the ring */
 .page-hero__text { max-width: 51.389vw; margin: 1.667vw auto 0; color: var(--text-muted); } /* 740 wide, 24 below the heading */
+
+/* ---------- arrow link: label + pink pill with the dot arrow; the whole thing is the link ---------- */
+.arrow-link { display: inline-flex; align-items: center; gap: 0.729vw; color: #fff; text-decoration: none; text-transform: uppercase; }  /* 10.5 label to pill */
+.arrow-link .button_label { flex: 1; line-height: 1; text-align: center; }
+.arrow-link__pill { flex: none; display: grid; place-items: center; width: 2.847vw; height: 2.361vw; border-radius: 99px; background: var(--pink); transition: background-color 0.3s; } /* 41x34 */
+/* hover / keyboard focus: as .btn, the pill brightens and the arrow redraws itself */
+.arrow-link:is(:hover, :focus-visible) .arrow-link__pill { background: #F2508A; }
+.arrow-link:is(:hover, :focus-visible) .btn__arrow circle { animation: btn-dot 0.35s calc(var(--i) * 60ms) cubic-bezier(0.3, 0.7, 0.4, 1.4) backwards; }
+
+/* ---------- about: what we do (three cards, 24 from the sides, 20 apart) ---------- */
+.what {
+    padding: 0 0 20vw;
+    text-align: center;
+    background: linear-gradient(to bottom, transparent calc(100% - 22vw), #045A93);
+}          /* blue glow that the next section's dome curves over */
+:is(.what, .why) .chip { padding: 0.417vw 0.59vw; font-size: 0.833vw; letter-spacing: 0; }       /* 12px, chip 24 tall */
+:is(.what, .why) .stem { --h: 4.306vw; margin: 1.181vw auto 0.819vw; }                           /* 62 long, 17 below the chip */
+.what__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.389vw; margin: 3.472vw 1.667vw 0; text-align: left; } /* 50 below the heading */
+/* one card (450x570): the image pair on top, title 327 down, links, optional note on the bottom */
+.what-card { position: relative; display: flex; flex-direction: column; padding: 22.708vw 2.083vw 2.222vw;   /* 327 top, 30 sides, 32 bottom */
+  border-radius: 0.694vw; background: #0F1E30; }
+.what-card__visual { position: absolute; left: 0; top: 0; }
+.what-card__img { position: absolute; max-width: none; }
+/* card px (left, top) of each image's own box, then its tilt, set by the card's place in the row (1st, 2nd, 3rd, then repeating);
+   the front image comes later in the markup. Sizes are for the design's own images, in the order revenue impact, accuracy rate,
+   payroll processed, employee satisfaction, automation impact, time saved */
+.what-card:nth-child(3n+1) .what-card__img--back { left: 14.951vw; top: 3.701vw; width: 10.529vw; rotate: 1.8deg; }          /* 151.6 wide at (215.3, 53.3) */
+.what-card:nth-child(3n+1) .what-card__img--front { left: 4.743vw; top: 5.917vw; width: 12.853vw; rotate: -5.72deg; }          /* 185.1 at (68.3, 85.2) */
+.what-card:nth-child(3n+2) .what-card__img--back { left: 4.868vw; top: 4.924vw; width: 10.607vw; rotate: -4.59deg; }      /* 152.7 at (70.1, 70.9) */
+.what-card:nth-child(3n+2) .what-card__img--front { left: 14.076vw; top: 6.882vw; width: 11.303vw; rotate: 1.72deg; }  /* 162.8 at (202.7, 99.1) */
+.what-card:nth-child(3n+3) .what-card__img--back { left: 14.847vw; top: 6.285vw; width: 9.451vw; rotate: 3.95deg; }       /* 136.1 at (213.8, 90.5) */
+.what-card:nth-child(3n+3) .what-card__img--front { left: 4.563vw; top: 7.16vw; width: 10.608vw; rotate: -6.77deg; }              /* 152.8 at (65.7, 103.1) */
+.what-card__links { display: grid; grid-template-columns: repeat(2, max-content); justify-content: start; gap: 1.389vw 2.986vw; margin-top: 2.986vw; } /* 43 below the title, rows 20 apart, 43 between links */
+.what-card__links:has(> :nth-child(3)) { column-gap: 4.653vw; }                                  /* two rows of links: columns 67 apart */
+.what-card__links:has(> :nth-child(3)) .button_label { max-width: 7.5vw; }                       /* and long labels wrap onto two lines (108) */
+.what-card__note { margin: auto 0 -0.25vw; padding-top: 1.389vw; color: var(--text-muted); font: 400 0.833vw/1.167 var(--font-sans); } /* 12px on a 14 line */
+
+/* ---------- about: why choose (dome top, intro, one card of three columns) ---------- */
+.why { position: relative; isolation: isolate; overflow: hidden; padding: 3.542vw 5.694vw 6.944vw; text-align: center;   /* 51 from the dome top to the chip, card 82 from the sides */ margin-top: -8vw;}                                     /* blue shows in the corners outside the dome */
+.why::before { content: ""; position: absolute; z-index: -1; left: 50%; top: 0; width: 363.472vw; aspect-ratio: 1;   /* the dome: r 2617, as .cases */
+  translate: -50% 0; border-radius: 50%; background: var(--bg); }
+.why__text { max-width: 58.75vw; margin: 1.181vw auto 0; color: var(--text-muted); }             /* 846 wide, 17 below the heading */
+.why__chip { margin-top: 1.806vw; }                                                               /* 26 below the text */
+.why__card { display: grid; grid-template-columns: 414.5fr 430fr 429.5fr; margin-top: 1.875vw; border-radius: 0.694vw; background: #0F1E30; text-align: left; } /* 27 below the chip; dividers 414.5 and 844.5 from the left */
+.why__item { position: relative; padding: 3.264vw 1.389vw 2.361vw 4.063vw; }                     /* 47 top, 34 bottom, copy 58.5 after the divider */
+.why__item:first-child { padding-left: 3.056vw; }                                                /* 44 */
+.why__item:last-child { padding-left: 3.438vw; }                                                 /* 49.5 */
+.why__item + .why__item::before { content: ""; position: absolute; left: 0; top: 2.778vw; bottom: 1.806vw; border-left: 1px dotted rgba(255, 255, 255, 0.35); } /* 40 from the top, 26 from the bottom */
+.why__item .body { max-width: 22.222vw; margin-top: 2.569vw; color: var(--text-muted); }         /* 320 wide, 37 below the heading */

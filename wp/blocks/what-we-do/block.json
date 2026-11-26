@@ -1,0 +1,17 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "acf/what-we-do",
+  "title": "What we do cards",
+  "category": "theme",
+  "icon": "grid-view",
+  "supports": {
+    "anchor": true,
+    "align": false,
+    "html": false
+  },
+  "acf": {
+    "mode": "preview",
+    "renderTemplate": "render.php"
+  }
+}

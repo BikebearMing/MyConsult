@@ -69,6 +69,14 @@ function mc_btn($link, $class = 'btn', $delay = '') {
     esc_html($link['title']), mc_arrow());
 }
 
+// ACF link field -> label + pink arrow pill; the whole thing is the link.
+function mc_arrow_link($link) {
+  if (empty($link['url'])) return '';
+  return sprintf('<a class="arrow-link" href="%s"%s><span class="button_label">%s</span><span class="arrow-link__pill">%s</span></a>',
+    esc_url($link['url']), $link['target'] ? ' target="' . esc_attr($link['target']) . '" rel="noopener"' : '',
+    esc_html($link['title']), mc_arrow());
+}
+
 function mc_menu($location) {
   $l = get_nav_menu_locations();
   return empty($l[$location]) ? [] : (wp_get_nav_menu_items($l[$location]) ?: []);

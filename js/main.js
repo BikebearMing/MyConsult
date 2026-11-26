@@ -107,8 +107,18 @@
 
   // hero arcs scroll animation lives in js/arcs.js (it needs three.js)
 
-  // looping CSS animations only run while their section is on screen (see .is-in in style.css)
-  gsap.utils.toArray('.logos, .services').forEach(function (el) { ScrollTrigger.create({ trigger: el, toggleClass: 'is-in' }); });
+  // the logo strip only runs while it is on screen (see .is-in in style.css)
+  gsap.utils.toArray('.logos').forEach(function (el) { ScrollTrigger.create({ trigger: el, toggleClass: 'is-in' }); });
+
+  // ---------- card images (home services cards, about what-we-do cards) ----------
+  // Each card's two dashboard images fade in one after the other (back first) when the card scrolls into view,
+  // a beat after the card to its left.
+  gsap.utils.toArray('.service, .what-card').forEach(function (card) {
+    var i = Array.prototype.indexOf.call(card.parentNode.children, card);
+    var imgs = card.querySelectorAll('.service__img, .what-card__img');
+    if (imgs.length) late(gsap.timeline({ scrollTrigger: { trigger: card, start: 'top 75%' } }))
+      .from(imgs, { autoAlpha: 0, y: '1.2vw', duration: 1.1, ease: 'power2.out', stagger: 0.25 }, i % 3 * 0.15);
+  });
 
   // ---------- logos marquee ----------
   // Repeat the set until half the track is at least a screen wide; CSS then moves the track left by half and loops.
@@ -119,46 +129,4 @@
       var c = li.cloneNode(true); c.setAttribute('aria-hidden', 'true'); track.appendChild(c);
     });
   });
-})();
-
-// ---------- service cards ----------
-// Outside the block above so the cards stay static with reduced motion. Each card's pair plays in once, when the
-// cards scroll into view, a beat after the card to its left.
-(function () {
-  if (matchMedia('(prefers-reduced-motion: reduce)').matches || !window.gsap) return;
-  document.querySelectorAll('.service').forEach(function (card, i) {
-    var tl = dashIn(card), shown = false;
-    if (tl) ScrollTrigger.create({ trigger: card, start: 'top 75%', onEnter: function () { if (!shown) { shown = true; tl.delay(i % 3 * 0.15).restart(true); } } });
-  });
-
-  // One paused timeline per card: the pair deals in, rings draw, numbers count up, chart lines draw and their dots pop,
-  // bars grow, stars pop, icons land.
-  function dashIn(card) {
-    if (!card.querySelector('.dash')) return null;
-    var q = function (s) { return card.querySelectorAll(s); }, tl = gsap.timeline({ paused: true });
-    tl.from(q('.dash'), { y: '3vw', rotation: 6, autoAlpha: 0, duration: 1, ease: 'power3.out', stagger: 0.15 }, 0);
-    q('.dash__arc').forEach(function (arc, i) {                                   // magenta stretch, then the dusty pink tail
-      var len = arc.getAttribute('stroke-dasharray').split(' ')[0];
-      tl.fromTo(arc, { strokeDashoffset: len }, { strokeDashoffset: 0, duration: i ? 0.35 : 1.1, ease: i ? 'power2.out' : 'power2.in' }, i ? 1.5 : 0.4);
-    });
-    q('[data-to]').forEach(function (n) {
-      var d = n.dataset, dec = +d.decimals || 0, o = { v: 0 }, fmt = function () {
-        n.textContent = (d.prefix || '') + o.v.toLocaleString('en', { minimumFractionDigits: dec, maximumFractionDigits: dec }) + (d.suffix || ''); // 2,856
-      };
-      fmt(); tl.fromTo(o, { v: 0 }, { v: +d.to, duration: 1.6, ease: 'power2.out', onUpdate: fmt }, 0.4);
-    });
-    q('.dash__line').forEach(function (line) {
-      var len = line.getTotalLength();
-      tl.fromTo(line, { strokeDasharray: len, strokeDashoffset: len }, { strokeDashoffset: 0, duration: 1.2, ease: 'power2.inOut' }, 0.5);
-    });
-    tl.from(q('.dash__grid line'), { scaleY: 0, transformOrigin: '50% 100%', duration: 0.5, stagger: 0.1, ease: 'power2.out' }, 0.6)
-      .from(q('.dash__dots circle'), { scale: 0, transformOrigin: '50% 50%', duration: 0.3, stagger: 0.09, ease: 'back.out(3)' }, 0.6)
-      .from(q('.dash__end, .dash__halo'), { scale: 0, autoAlpha: 0, transformOrigin: '50% 50%', duration: 0.5, ease: 'back.out(3)' }, 1.6)
-      .from(q('.dash__row'), { y: 10, autoAlpha: 0, duration: 0.6, ease: 'power2.out' }, 0.9)
-      .from(q('.dash__area'), { autoAlpha: 0, duration: 0.8 }, 1.2)
-      .from(q('.dash__bars i'), { scaleY: 0, transformOrigin: '50% 100%', duration: 0.8, ease: 'power3.out', stagger: 0.08 }, 0.5)
-      .from(q('.dash__stars svg'), { scale: 0, autoAlpha: 0, transformOrigin: '50% 50%', duration: 0.4, ease: 'back.out(3)', stagger: 0.08 }, 0.7)
-      .from(q('.dash__icon, .dash__gear'), { scale: 0.4, rotation: -90, autoAlpha: 0, transformOrigin: '50% 50%', duration: 0.7, ease: 'back.out(2)' }, 0.6);
-    return tl;
-  }
 })();

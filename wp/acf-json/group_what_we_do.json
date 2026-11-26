@@ -1,0 +1,96 @@
+{
+    "key": "group_what_we_do",
+    "title": "Block: What we do cards",
+    "fields": [
+        {
+            "key": "field_what_we_do_chip",
+            "label": "Chip",
+            "name": "chip",
+            "type": "text"
+        },
+        {
+            "key": "field_what_we_do_title",
+            "label": "Title",
+            "name": "title",
+            "type": "text"
+        },
+        {
+            "key": "field_what_we_do_cards",
+            "label": "Cards",
+            "name": "cards",
+            "type": "repeater",
+            "layout": "block",
+            "button_label": "Add card",
+            "sub_fields": [
+                {
+                    "key": "field_what_we_do_cards_image_back",
+                    "label": "Back image",
+                    "name": "image_back",
+                    "type": "image",
+                    "instructions": "The image behind. Transparent WebP or PNG, about 750 px wide.",
+                    "return_format": "array",
+                    "preview_size": "medium",
+                    "library": "all",
+                    "mime_types": "webp, png, jpg, jpeg"
+                },
+                {
+                    "key": "field_what_we_do_cards_image_front",
+                    "label": "Front image",
+                    "name": "image_front",
+                    "type": "image",
+                    "instructions": "The image in front. Transparent WebP or PNG, about 750 px wide.",
+                    "return_format": "array",
+                    "preview_size": "medium",
+                    "library": "all",
+                    "mime_types": "webp, png, jpg, jpeg"
+                },
+                {
+                    "key": "field_what_we_do_cards_title",
+                    "label": "Title",
+                    "name": "title",
+                    "type": "textarea",
+                    "rows": 2,
+                    "new_lines": "br",
+                    "instructions": "Line breaks are kept."
+                },
+                {
+                    "key": "field_what_we_do_cards_links",
+                    "label": "Links",
+                    "name": "links",
+                    "type": "repeater",
+                    "layout": "table",
+                    "button_label": "Add link",
+                    "sub_fields": [
+                        {
+                            "key": "field_what_we_do_cards_links_link",
+                            "label": "Link",
+                            "name": "link",
+                            "type": "link",
+                            "return_format": "array"
+                        }
+                    ]
+                },
+                {
+                    "key": "field_what_we_do_cards_note",
+                    "label": "Note",
+                    "name": "note",
+                    "type": "textarea",
+                    "rows": 2,
+                    "new_lines": "br",
+                    "instructions": "Optional small print at the bottom of the card. Line breaks are kept."
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf/what-we-do"
+            }
+        ]
+    ],
+    "active": true,
+    "modified": 1795669873
+}
