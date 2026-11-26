@@ -12,4 +12,13 @@ $toggle = '<span class="faq__toggle" aria-hidden="true"><svg viewBox="-10 -10 20
     </details>
     <?php endforeach; ?>
   </div>
+  <?php if (get_field('cta_title')): // optional box under the questions ?>
+  <div class="faq__cta" data-reveal>
+    <h2 class="h2"><?= wp_kses_post(get_field('cta_title')) ?></h2>
+    <div class="faq__cta-body">
+      <p class="body"><?= esc_html(get_field('cta_text')) ?></p>
+      <?= mc_btn(get_field('cta_button')) ?>
+    </div>
+  </div>
+  <?php endif; ?>
 </section>

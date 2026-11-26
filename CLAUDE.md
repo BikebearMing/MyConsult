@@ -1,7 +1,7 @@
 # MyConsult website
 
 Marketing site for MyConsult, a Malaysian accounting consultancy. Live on WordPress at
-https://myconsult.bear-demo.com (staging/demo host). Pages: Home (live), About (the prototype `about.html` is complete: page-hero, what-we-do, why-choose, leadership, partners, faq with a CTA box, footer; only the first three sections are in the theme and live, as page ID 44, slug `about`).
+https://myconsult.bear-demo.com (staging/demo host). Pages: Home (live), About (live as page ID 44, slug `about`; prototype `about.html`).
 
 ## How the project is set up
 
@@ -52,11 +52,13 @@ dist/myconsult.zip         last built theme (build output)
 | `page-hero` | title (also the last breadcrumb; falls back to the page title), heading, text (line breaks kept); ring and orb are decorative |
 | `what-we-do` | chip, title, cards (repeater: image_back, image_front (Media Library images; position and tilt come from the card's place in the row), title (line breaks kept), links (repeater: link), note (line breaks kept, optional)) |
 | `why-choose` | chip, title, text, list_chip, items, labelled "Columns" (repeater: title (line breaks kept), text) |
+| `leadership` | title, people (repeater: photo, name, role (line breaks kept), bio, linkedin, youtube; an icon shows only when its link is filled) |
+| `partners` | title, groups (repeater: title, text (both keep line breaks), logos (repeater: logo, name)), cert_logo, cert_label, cert_text |
 | `about-intro` | title (line breaks kept), text, button (link) |
 | `logos` | label, logos (repeater: logo image, name, gap in design px) |
 | `services` | chip, title, text, slides, labelled "Cards" (repeater: image_back, image_front, title, points repeater, button) |
 | `case-studies` | chip, title, cases (repeater: image, title, text, solution, results, link) |
-| `faq` | title (line breaks kept), items (repeater: question, answer, open toggle) |
+| `faq` | title (line breaks kept), items (repeater: question, answer, open toggle), optional box under the questions: cta_title (line breaks kept), cta_text, cta_button |
 
 - **Site settings** (options page): header_cta, cta_title, cta_address, cta_button, phone, email, contact_address,
   copyright (the year is added automatically).

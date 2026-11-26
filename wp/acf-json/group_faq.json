@@ -42,6 +42,30 @@
                     "instructions": "Open on page load."
                 }
             ]
+        },
+        {
+            "key": "field_faq_cta_title",
+            "label": "CTA title",
+            "name": "cta_title",
+            "type": "textarea",
+            "rows": 3,
+            "new_lines": "br",
+            "instructions": "Optional box under the questions; it shows only when this is filled. Line breaks are kept."
+        },
+        {
+            "key": "field_faq_cta_text",
+            "label": "CTA text",
+            "name": "cta_text",
+            "type": "textarea",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_faq_cta_button",
+            "label": "CTA button",
+            "name": "cta_button",
+            "type": "link",
+            "return_format": "array"
         }
     ],
     "location": [
@@ -54,5 +78,5 @@
         ]
     ],
     "active": true,
-    "modified": 1793607803
+    "modified": 1795681059
 }

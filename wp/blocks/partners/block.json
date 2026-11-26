@@ -1,0 +1,17 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "acf/partners",
+  "title": "Partners and certifications",
+  "category": "theme",
+  "icon": "awards",
+  "supports": {
+    "anchor": true,
+    "align": false,
+    "html": false
+  },
+  "acf": {
+    "mode": "preview",
+    "renderTemplate": "render.php"
+  }
+}

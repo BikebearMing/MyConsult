@@ -1,0 +1,83 @@
+{
+    "key": "group_leadership",
+    "title": "Block: Leadership",
+    "fields": [
+        {
+            "key": "field_leadership_title",
+            "label": "Title",
+            "name": "title",
+            "type": "text"
+        },
+        {
+            "key": "field_leadership_people",
+            "label": "People",
+            "name": "people",
+            "type": "repeater",
+            "layout": "block",
+            "button_label": "Add person",
+            "sub_fields": [
+                {
+                    "key": "field_leadership_people_photo",
+                    "label": "Photo",
+                    "name": "photo",
+                    "type": "image",
+                    "instructions": "Portrait; it is cropped to fill the left side of the card. At least 550 x 812 px.",
+                    "return_format": "array",
+                    "preview_size": "medium",
+                    "library": "all",
+                    "mime_types": "webp, png, jpg, jpeg, svg"
+                },
+                {
+                    "key": "field_leadership_people_name",
+                    "label": "Name",
+                    "name": "name",
+                    "type": "text"
+                },
+                {
+                    "key": "field_leadership_people_role",
+                    "label": "Role",
+                    "name": "role",
+                    "type": "textarea",
+                    "rows": 2,
+                    "new_lines": "br",
+                    "instructions": "Line breaks are kept."
+                },
+                {
+                    "key": "field_leadership_people_bio",
+                    "label": "Bio",
+                    "name": "bio",
+                    "type": "textarea",
+                    "rows": 4,
+                    "new_lines": ""
+                },
+                {
+                    "key": "field_leadership_people_linkedin",
+                    "label": "LinkedIn link",
+                    "name": "linkedin",
+                    "type": "text",
+                    "placeholder": "https://",
+                    "instructions": "Optional. The icon shows only when this is filled; it opens in a new tab."
+                },
+                {
+                    "key": "field_leadership_people_youtube",
+                    "label": "YouTube link",
+                    "name": "youtube",
+                    "type": "text",
+                    "placeholder": "https://",
+                    "instructions": "Optional. The icon shows only when this is filled; it opens in a new tab."
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf/leadership"
+            }
+        ]
+    ],
+    "active": true,
+    "modified": 1795681059
+}

@@ -1,0 +1,102 @@
+{
+    "key": "group_partners",
+    "title": "Block: Partners and certifications",
+    "fields": [
+        {
+            "key": "field_partners_title",
+            "label": "Title",
+            "name": "title",
+            "type": "text"
+        },
+        {
+            "key": "field_partners_groups",
+            "label": "Groups",
+            "name": "groups",
+            "type": "repeater",
+            "layout": "block",
+            "button_label": "Add group",
+            "sub_fields": [
+                {
+                    "key": "field_partners_groups_title",
+                    "label": "Title",
+                    "name": "title",
+                    "type": "textarea",
+                    "rows": 2,
+                    "new_lines": "br",
+                    "instructions": "Line breaks are kept."
+                },
+                {
+                    "key": "field_partners_groups_text",
+                    "label": "Text",
+                    "name": "text",
+                    "type": "textarea",
+                    "rows": 3,
+                    "new_lines": "br",
+                    "instructions": "Line breaks are kept."
+                },
+                {
+                    "key": "field_partners_groups_logos",
+                    "label": "Logos",
+                    "name": "logos",
+                    "type": "repeater",
+                    "layout": "table",
+                    "button_label": "Add logo",
+                    "sub_fields": [
+                        {
+                            "key": "field_partners_groups_logos_logo",
+                            "label": "Logo",
+                            "name": "logo",
+                            "type": "image",
+                            "instructions": "Transparent background.",
+                            "return_format": "array",
+                            "preview_size": "medium",
+                            "library": "all",
+                            "mime_types": "webp, png, jpg, jpeg, svg"
+                        },
+                        {
+                            "key": "field_partners_groups_logos_name",
+                            "label": "Name",
+                            "name": "name",
+                            "type": "text"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "field_partners_cert_logo",
+            "label": "Certification logo",
+            "name": "cert_logo",
+            "type": "image",
+            "instructions": "Shown as a circle, so use a square image.",
+            "return_format": "array",
+            "preview_size": "medium",
+            "library": "all",
+            "mime_types": "webp, png, jpg, jpeg, svg"
+        },
+        {
+            "key": "field_partners_cert_label",
+            "label": "Certification label",
+            "name": "cert_label",
+            "type": "text"
+        },
+        {
+            "key": "field_partners_cert_text",
+            "label": "Certification text",
+            "name": "cert_text",
+            "type": "text",
+            "instructions": "The certification bar shows only when this is filled."
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf/partners"
+            }
+        ]
+    ],
+    "active": true,
+    "modified": 1795681059
+}
