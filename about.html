@@ -116,6 +116,73 @@
   </div>
 </section>
 
+<!-- ACF block: leadership (not in the theme yet)
+     fields: title (text), people (repeater: photo (image), name (text), role (textarea, line breaks kept), bio (textarea),
+             linkedin (url, optional), youtube (url, optional); the icons are assets/icons/*.svg and the links open in a new tab)
+     Two cards side by side; the photo fills the left 275 of its card (cropped to cover). -->
+<section class="leaders">
+  <h2 class="h2">Leadership</h2>
+  <div class="leaders__grid">
+    <article class="leader" data-reveal>
+      <img class="leader__photo" src="assets/about/leader-1.webp" alt="Dax Chew Xie Liang" width="366" height="541" loading="lazy">
+      <div class="leader__body">
+        <h3 class="h3">Dax Chew Xie Liang</h3>
+        <p class="leader__role">Founder and<br>Chief Moai Officer</p>
+        <p class="body leader__bio">Dax founded Myconsult in 2003 and leads the software division. He is an HRDF-certified trainer and publishes video guides for Malaysian SME owners on accounting software, e-Invoicing and compliance.</p>
+        <div class="leader__social">
+          <a class="social" href="#" target="_blank" rel="noopener" aria-label="Dax Chew Xie Liang on LinkedIn"><img src="assets/icons/linkedin.svg" alt="" width="24" height="24"></a>
+          <a class="social" href="#" target="_blank" rel="noopener" aria-label="Dax Chew Xie Liang on YouTube"><img src="assets/icons/youtube.svg" alt="" width="24" height="24"></a>
+        </div>
+      </div>
+    </article>
+    <article class="leader" data-reveal data-delay="0.15">
+      <img class="leader__photo" src="assets/about/leader-2.webp" alt="Lok Siao Chze" width="367" height="542" loading="lazy">
+      <div class="leader__body">
+        <h3 class="h3">Lok Siao Chze</h3>
+        <p class="leader__role">Partner and<br>Chief Compliance Officer</p>
+        <p class="body leader__bio">Siao Chze leads Myconsult’s outsourced accounting and payroll division. She holds a degree in Accounting and Finance and has been an ACCA member since 2004.</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ACF block: partners (not in the theme yet)
+     fields: title (text), groups (repeater: title (textarea, line breaks kept), text (textarea, line breaks kept), logos (repeater: logo (image), name (text))),
+             cert_logo (image), cert_label (text), cert_text (text)
+     Two groups either side of a dotted divider, each a heading + note and a column of logo tiles; then the certification bar. -->
+<section class="partners">
+  <h2 class="h2">Technology partners and certifications</h2>
+  <div class="partners__groups">
+    <div class="partner-group">
+      <div class="partner-group__text">
+        <h3 class="h3">Authorised<br>dealer</h3>
+        <p class="body">AutoCount and<br>SQL Accounting</p>
+      </div>
+      <ul class="partner-group__list">
+        <li class="partner"><span class="partner__logo"><img src="assets/about/logo-autocount.webp" alt="" width="482" height="269" loading="lazy"></span><span class="partner__name">AutoCount</span></li>
+        <li class="partner"><span class="partner__logo"><img src="assets/about/logo-sql.webp" alt="" width="496" height="141" loading="lazy"></span><span class="partner__name">SQL Accounting</span></li>
+      </ul>
+    </div>
+    <div class="partner-group">
+      <div class="partner-group__text">
+        <h3 class="h3">Software our<br>team works in</h3>
+        <p class="body">Xero and QuickBooks, used daily on outsourced accounting engagements</p>
+      </div>
+      <ul class="partner-group__list">
+        <li class="partner"><span class="partner__logo"><img src="assets/about/logo-xero.webp" alt="" width="787" height="787" loading="lazy"></span><span class="partner__name">Xero</span></li>
+        <li class="partner"><span class="partner__logo"><img src="assets/about/logo-quickbooks.webp" alt="" width="447" height="447" loading="lazy"></span><span class="partner__name">QuickBooks</span></li>
+      </ul>
+    </div>
+  </div>
+  <div class="cert">
+    <img class="cert__logo" src="assets/about/cert-hrdcorp.webp" alt="HRD Corp registered training provider" width="500" height="500" loading="lazy">
+    <div class="cert__text">
+      <p class="h5 cert__label">Certifications</p>
+      <p class="h3">Our Training delivered by an HRDF-certified trainer.</p>
+    </div>
+  </div>
+</section>
+
 <!-- Site footer (theme template part, not an ACF block)
      ACF options page: cta_title (text), cta_address (textarea), cta_button (link), phone (text), email (email),
      contact_address (textarea), copyright (text); menus: wp_nav_menu('footer-solutions'), ('footer'), ('legal') -->

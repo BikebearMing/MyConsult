@@ -419,7 +419,7 @@ body { background: var(--bg-gradient), var(--bg); color: var(--text); }
 .what-card__note { margin: auto 0 -0.25vw; padding-top: 1.389vw; color: var(--text-muted); font: 400 0.833vw/1.167 var(--font-sans); } /* 12px on a 14 line */
 
 /* ---------- about: why choose (dome top, intro, one card of three columns) ---------- */
-.why { position: relative; isolation: isolate; overflow: hidden; padding: 3.542vw 5.694vw 6.944vw; text-align: center;   /* 51 from the dome top to the chip, card 82 from the sides */ margin-top: -8vw;}                                     /* blue shows in the corners outside the dome */
+.why { position: relative; isolation: isolate; overflow: hidden; padding: 3.542vw 5.694vw 0; text-align: center;   /* 51 from the dome top to the chip, card 82 from the sides */ margin-top: -8vw;}                                     /* blue shows in the corners outside the dome */
 .why::before { content: ""; position: absolute; z-index: -1; left: 50%; top: 0; width: 363.472vw; aspect-ratio: 1;   /* the dome: r 2617, as .cases */
   translate: -50% 0; border-radius: 50%; background: var(--bg); }
 .why__text { max-width: 58.75vw; margin: 1.181vw auto 0; color: var(--text-muted); }             /* 846 wide, 17 below the heading */
@@ -430,3 +430,35 @@ body { background: var(--bg-gradient), var(--bg); color: var(--text); }
 .why__item:last-child { padding-left: 3.438vw; }                                                 /* 49.5 */
 .why__item + .why__item::before { content: ""; position: absolute; left: 0; top: 2.778vw; bottom: 1.806vw; border-left: 1px dotted rgba(255, 255, 255, 0.35); } /* 40 from the top, 26 from the bottom */
 .why__item .body { max-width: 22.222vw; margin-top: 2.569vw; color: var(--text-muted); }         /* 320 wide, 37 below the heading */
+
+/* ---------- about: leadership (two cards, 24 from the sides, 16 apart) ---------- */
+.leaders { padding: 7.153vw 1.667vw 0; text-align: center; }                                    /* heading 103 below the why-choose card */
+.leaders__grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.111vw; margin-top: 2.583vw; text-align: left; } /* 37 below the heading */
+.leader { display: grid; grid-template-columns: 19.097vw 1fr; min-height: 28.194vw; border-radius: 0.694vw; overflow: hidden; background: #0F1E30; } /* photo 275 wide, card 406 tall */
+.leader__photo { width: 100%; height: 100%; object-fit: cover; }
+.leader__body { padding: 3.132vw 1.389vw 2.5vw 2.986vw; }                                       /* name 45 from the top, copy 43 from the photo */
+.leader__role { margin-top: 0.979vw; font: 400 1.389vw/1 var(--font-serif); color: var(--text-muted); }   /* 20px on a 20 line, 14 below the name */
+.leader__bio { max-width: 22.708vw; margin-top: 5.743vw; color: var(--text-muted); }            /* 327 wide, 83 below the role */
+.leader__social { display: flex; gap: 0.694vw; margin-top: 2.299vw; }                           /* 33 below the bio, 10 apart */
+/* round pink icon link */
+.social { display: grid; place-items: center; width: 2.5vw; aspect-ratio: 1; border-radius: 50%; background: var(--pink); transition: background-color 0.3s; } /* 36 */
+.social:is(:hover, :focus-visible) { background: #F2508A; }
+.social img { width: 1.042vw; }                                                                /* 15 */
+
+/* ---------- about: technology partners and certifications ---------- */
+.partners { padding: 9.5vw 0 6.944vw; text-align: center; }                                     /* heading 137 below the leadership cards */
+.partners__groups { display: flex; justify-content: center; margin-top: 5.083vw; text-align: left; }   /* 73 below the heading */
+.partner-group { display: grid; grid-template-columns: 16.25vw 13.819vw; }                     /* copy 234 | tiles 199 */
+.partner-group + .partner-group { margin-left: 3.507vw; padding-left: 3.715vw; border-left: 1px dotted rgba(255, 255, 255, 0.35); } /* 50.5 | divider | 53.5 */
+.partner-group__text .body { max-width: 11.458vw; margin-top: 1.375vw; color: var(--text-muted); }     /* 165 wide, 20 below the heading */
+.partner-group__list { display: grid; gap: 1.389vw; align-content: start; }                    /* tiles 20 apart */
+.partner { display: grid; grid-template-columns: 6.319vw 1fr; column-gap: 1.111vw; align-items: center; height: 5.417vw; border-radius: 0.417vw; background: #0F1E30; } /* 199x78: logo slot 91, name 107 from the left */
+.partner__logo { display: grid; place-items: center; }
+.partner__logo img { width: auto; height: auto; max-width: 4.931vw; max-height: 4.028vw; }     /* fits 71x58 */
+.partner__name { font: 400 1.389vw/1 var(--font-serif); }                                       /* 20px on a 20 line */
+/* certification bar: 1040 wide, 62 below the tiles */
+.cert { display: flex; align-items: center; gap: 6.042vw; width: 72.222vw; min-height: 9.444vw; margin: 4.333vw auto 0; padding: 0 2.778vw 0 7.361vw; /* 136 tall; logo 106 from the left, copy 87 after it */
+  border-radius: 0.694vw; background: #0F1E30; text-align: left; }
+.cert__logo { flex: none; width: 5.139vw; border-radius: 50%; }                                 /* 74 */
+.cert__label { text-transform: uppercase; }
+.cert__text .h3 { margin-top: 0.292vw; }                                                        /* 4 below the label */

@@ -1,7 +1,7 @@
 # MyConsult website
 
 Marketing site for MyConsult, a Malaysian accounting consultancy. Live on WordPress at
-https://myconsult.bear-demo.com (staging/demo host). Pages: Home (live), About (in progress: sections 1-3 are in the prototype `about.html` and live as page ID 44, slug `about`).
+https://myconsult.bear-demo.com (staging/demo host). Pages: Home (live), About (in progress: sections 1-5 are in the prototype `about.html`; sections 1-3 are live as page ID 44, slug `about`; 4 `leadership` and 5 `partners` are not in the theme yet).
 
 ## How the project is set up
 
